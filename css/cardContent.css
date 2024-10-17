@@ -1,0 +1,270 @@
+/* Tab content container */
+.tab-content {
+    /* background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px; */
+    margin-top: 150px;
+    padding: 20px;
+}
+
+/* Individual tab pane */
+.tab-pane {
+    color: #E1C290;
+}
+
+/* Labels for volume controls */
+.form-label {
+    font-family: 'Advent Pro', sans-serif;
+    color: #E1C290;
+    font-size: 48px;
+    /* font-weight: small; */
+    margin-left: 80px;
+    margin-bottom: 40px;
+  }
+  
+  /* Range input styling */
+  .form-range {
+    padding-left: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    width: 60%;
+    margin-left: 300px;
+  }
+  
+
+  /* Labels for privacy Settings */
+  .privacy-form-label {
+    color: white;
+    font-size: 48px;
+    font-weight: 144px;
+    font-family: 'Advent Pro';
+    /* display: inline; */
+    /* margin-right: 100px; */
+    /* margin-left: 30px; */
+    /* margin-bottom: 50px; */
+
+  }
+
+  /* This one is for the privacy selection box */
+  .form-select {
+    color: #E1C290;
+    background-color: black;
+    font-size: 36px;
+    /* position: absolute; */
+    flex-wrap: wrap;
+    font-family: 'Advent Pro', sans-serif;
+    border-radius: 50px;
+    font-weight: 400;
+    /* border: none; */
+    border-color: #E1C290;
+    width: 200px;
+    outline: none;
+    appearance: none;
+  }
+
+.form-select option {
+  color: black;
+  background-color: #E1C290;
+}
+
+.form-select option:hover,
+.form-select option:active,
+.form-select option:focus{
+  color: white;
+  background-color: black;
+  outline: none;
+  border-color: #E1C290;
+}
+
+.privacy-settings {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 110px;
+  justify-content: space-between;
+}
+
+@media (max-width: 768px) {
+  .privacy-settings {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .form-select {
+      width: 100%; /* Full width on small screens */
+  }
+}
+
+.reset-buttons {
+  font-size: 36px;
+  font-family: 'Advent Pro';
+}
+
+.rs-btn,
+.rp-btn {
+  border-radius: 50px;
+  color: #E1C290;
+  background-color: black;
+  border-color: #E1C290;
+  width: 80%;
+  margin-left: 10%;
+  text-align: left;
+  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.rs-btn {
+  margin-bottom: 15%;
+}
+
+.rp-btn {
+  color: red;
+  border-color: red;
+}
+
+.reset-card {
+  position: absolute;
+  background-color: black;
+  border-color: #E1C290;
+  border-radius: 50px;
+  width: 687px;
+  height: 471px;
+  align-items: center;
+  justify-content: center;
+  /* margin-bottom: 20%; */
+  margin-left: 10%;
+  top: 0;
+  margin-top: 7%;
+  /* left: 0; */
+  /* right: 0; */
+  /* margin: auto; */
+  /* z-index: 10; */
+}
+
+.reset-card-body {
+  position: absolute;
+  font-family: 'Advent Pro';
+  font-size: 36px;
+  font-weight: 144;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+
+.reset-card-text{
+  /* padding-left: 20px; */
+  /* padding-top: 30px; */
+  position: relative;
+  top: -20px;
+}
+
+.reset-card-title {
+  position: relative;
+  font-size: 36px;
+  color: #E1C290;
+  top: -40px;
+  /* padding-left: 20px; */
+}
+
+.reset-card-buttons {
+  position: relative;
+  bottom: -20px;
+  /* padding-left: 20px; */
+}
+
+#cancel-btn, #reset-btn{
+  font-family: 'Advent Pro', sans-serif;
+  justify-content: space-between;
+  border-radius: 50px;
+  width: 250px;
+  height: 80px;
+}
+
+#cancel-btn {
+  border-color: #E1C290;
+  color: #E1C290;
+  background-color: black;
+  margin-right: 20%;
+}
+
+#reset-btn {
+  color: red;
+  border-color: red;
+  background-color: black;
+}
+
+  /* Customize the thumb of the range input */
+.form-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 19px;
+    width: 19px;
+    background-color: black;
+    border: 0.5px solid #E1C290;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    /* color: #E1C290; */
+    margin-top: -7px;
+}
+
+.form-range::-webkit-slider-thumb:active, 
+.form-range::-webkit-slider-thumb:focus {
+    background-color: #E1C290;
+    /* transform: scale(1.5); */
+    box-shadow: 0 0 15px 5px #E1C290;
+}
+
+  /* Customize the track of the range input */
+  .form-range::-webkit-slider-runnable-track {
+    height: 2.5px;
+    background-color: white;
+  }
+  
+  /* Add some spacing between volume controls */
+  /* .mb-3 {
+    margin-bottom: 1rem;
+  }
+   */
+
+
+   .btn-1 {
+    /* background-color: #E1C290;  */
+    font-size: 36px;
+    background-color: black;
+}
+
+.card-buttons {
+    font-size: small;
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    font-family: 'Advent Pro', sans-serif;
+    /* letter-spacing: 1000px; */
+    color :#E1C290;
+
+    /* padding: 25px; */
+    margin: 10px auto 35px;
+}
+
+.card-buttons .btn-1 {
+    /* height: 50%; */
+    color: #E1C290;
+    border-color:#E1C290;
+    border-radius: 50px;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-buttons .btn-1:not(:last-child) {
+    margin-right: 90px;
+}
+
+.card-buttons .btn-1:hover {
+    background-color: #E1C290;
+    color: black;
+    transform: scale(0.98); /* Slightly shrink the button when pressed */
+}
