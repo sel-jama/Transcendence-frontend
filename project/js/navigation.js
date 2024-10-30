@@ -4,11 +4,11 @@ function initializeNavigation() {
 
     leftBtn.addEventListener('click', () => {
         console.log('Left button clicked');
-        // Add functionality for left button (e.g., go back)
+        // Add functionality for left button (go back)
     });
 
     rightBtn.addEventListener('click', () => {
         console.log('Right button clicked');
-        // Add functionality for right button (e.g., open menu)
+        // Add functionality for right button (open menu)
     });
 }

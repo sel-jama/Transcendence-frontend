@@ -20,7 +20,7 @@ class CardContent extends HTMLElement {
         ]);
     }
 
-    loadCSS(href) {
+    loadCSS(href){
         return new Promise((resolve, reject) => {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
@@ -31,7 +31,7 @@ class CardContent extends HTMLElement {
         });
     }
 
-    render() {
+    render(){
         this.shadowRoot.innerHTML += `
             <div class="tab-content" id="pills-tabContent">
                 <div class="tab-pane fade show active" id="pills-sound" role="tabpanel">

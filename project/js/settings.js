@@ -3,7 +3,7 @@ function initializeSettings() {
     const outerButtons = document.querySelectorAll('.btn-2');
     const cardContent = document.querySelector('card-content');
     const cardButtons = document.querySelector('.card-buttons');
-    const resetButtons = document.querySelector('.reset-buttons');
+    // const resetButtons = document.querySelector('.reset-buttons');
 
     settingsButtons.forEach(button => {
         button.addEventListener('click', () => {
@@ -24,10 +24,9 @@ function initializeSettings() {
             updateCardContent(button.textContent, cardContent);
         });
     });
-
 }
 
-function updateCardContent(buttonText, cardContent) {
+function updateCardContent(buttonText, cardContent){
     let newContent = '';
     
     switch(buttonText) {
@@ -154,7 +153,9 @@ function attachResetButtonListeners(cardContent) {
                     </div>
                 `
                 
-            } else if (button.classList.contains('rp-btn')) {
+            } 
+            else if(button.classList.contains('rp-btn'))
+            {
                 console.log('Reset Profile clicked');
                 newContent = `
                     <div class="card reset-card ">
@@ -172,9 +173,26 @@ function attachResetButtonListeners(cardContent) {
             }
 
             cardContent.shadowRoot.querySelector('.tab-content').innerHTML = newContent;
+            attachResetCardButtonsListeners(cardContent);
         });
     });
 
+}
+
+function attachResetCardButtonsListeners(cardContent) {
+    const resetButtons = cardContent.shadowRoot.querySelectorAll('.reset-card-buttons button');
+    let newContent = '';
+
+    resetButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log(`${button.textContent} clicked`);
+            if (button.textContent == 'Cancel') {
+                // console.log('canceling');
+                updateCardContent('Reset Options', cardContent);
+            } 
+
+        });
+    });
 }
 
 // Call initializeSettings when the DOM is loaded
