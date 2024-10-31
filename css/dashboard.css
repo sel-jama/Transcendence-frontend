@@ -23,10 +23,10 @@ html, body {
     font-size: 90px;
     font-weight: bolder;
     border-radius: 40px;
-    padding: 20px; /*control the size*/
+    padding: 20px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);    
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .btn-0:hover,
@@ -86,11 +86,21 @@ html, body {
 
 /* sliders */
 
+#page {
+    height: 100vh;
+    width: 100vw;
+}
+
+.dashboard-slides {
+    height: 80vh;
+    width: 100vw;
+    margin-top: 2%;
+}
+
 .wrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    /* height: 100vh; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,23 +115,23 @@ html, body {
 }
 
 .card {
-    width: 310px;
-    height: 700px;
-    border-radius: .75rem;
+    width: 15vw;
+    height: 75vh;
+    /* max-width: 310px;
+    max-height: 700px; */
+    border-radius: 0.75rem;
     background-size: cover;
     cursor: pointer;
     overflow: hidden;
-    margin: 0 10px;
+    margin: 0 1vw;  /* Responsive margin */
     display: flex;
     align-items: flex-start;
     transition: transform 0.6s cubic-bezier(.28, -0.03, 0, .99);
-    box-shadow: 0px 10px 30px -5px rgba(0,0,0,0.8);
+    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.8);
     transform-style: preserve-3d;
 
-    border-top-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    /* transition: transform 0.3s ease; */
-
+    border-top-left-radius: 5vw;
+    border-bottom-right-radius: 5vw;
 }
 
 #c1 +label,
@@ -136,21 +146,11 @@ html, body {
     transform: scale(1.1);
 }
 
-/* Disable width change on input selection */
-/* input:checked + label {
-    width: 80px; 
-}
-
-input:checked + label .description {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-} */
-
-
 .card[for="c1"] {
     background-image:  url('../images/profile.jpg');
 }
 .card[for="c2"] {
+    background-color: #A6A6A6;
     background-image:  url('../images/leaderboard.png');
 }
 .card[for="c3"] {
@@ -174,3 +174,14 @@ input:checked + label .description {
 input[type="radio"] {
     display: none;
 }
+
+/* Example media query for mobile screens */
+@media (max-width: 768px) {
+    .card {
+        width: 90vw;
+        height: auto;
+        border-top-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+    }
+}
+
