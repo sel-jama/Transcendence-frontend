@@ -57,8 +57,8 @@ html, body {
     max-width: 68%;
     height: auto;
     z-index: 10;
-    object-fit: contain;
-    /* overflow: hidden;0 */
+    /* object-fit: contain; */
+    overflow: hidden;
 }
 
 .btn-0 {
