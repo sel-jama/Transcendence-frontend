@@ -30,17 +30,78 @@
     margin-left: 300px;
   }
   
+  .form-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 19px;
+    width: 19px;
+    background-color: black;
+    border: 0.5px solid #E1C290;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    /* color: #E1C290; */
+    margin-top: -7px;
+  }
+  
+  .form-range::-webkit-slider-thumb:active, 
+  .form-range::-webkit-slider-thumb:focus {
+    background-color: #E1C290;
+    /* transform: scale(1.5); */
+    box-shadow: 0 0 15px 5px #E1C290;
+  }
+  
+  .form-range::-webkit-slider-runnable-track {
+    height: 2.5px;
+    background-color: white;
+  }
+
+  /* for mozilla */
+  .form-range::-moz-range-thumb{
+    height: 19px;
+    width: 19px;
+    background-color: black;
+    border: 0.5px solid #E1C290;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    /* color: #E1C290; */
+    margin-top: -7px;
+  }
+  
+  .form-range::-moz-range-thumb:active, 
+  .form-range::-moz-range-thumb:focus {
+    background-color: #E1C290;
+    /* transform: scale(1.5); */
+    box-shadow: 0 0 15px 5px #E1C290;
+  }
+  
+  .form-range::-moz-range-track{
+    height: 2.5px;
+    background-color: white;
+  }
+
+  .privacy-settings {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    /* margin-bottom: 50%; */
+    align-items: center;
+    /* flex-wrap: wrap; */
+    /* gap: 20px; */
+    /* justify-content: space-between; */
+  }
 
   /* Labels for privacy Settings */
   .privacy-form-label {
     color: white;
-    font-size: 48px;
+    font-size: clamp(25px, 4vw ,48px);
     font-weight: 144px;
     font-family: 'Advent Pro';
+    white-space: nowrap;
     /* display: inline; */
     /* margin-right: 100px; */
-    /* margin-left: 30px; */
-    /* margin-bottom: 50px; */
+    padding-left: 10%;
+    margin-bottom: 40%;
 
   }
 
@@ -56,9 +117,11 @@
     font-weight: 400;
     /* border: none; */
     border-color: #E1C290;
-    width: 200px;
-    outline: none;
-    appearance: none;
+    width: 25%;
+    margin-left: 55%;
+    margin-bottom: 20%;
+    /* outline: none; */
+    /* appearance: none; */
   }
 
 .form-select option {
@@ -75,24 +138,17 @@
   border-color: #E1C290;
 }
 
-.privacy-settings {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 110px;
-  justify-content: space-between;
-}
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .privacy-settings {
       flex-direction: column;
       align-items: flex-start;
   }
 
   .form-select {
-      width: 100%; /* Full width on small screens */
+      width: 100%;
   }
-}
+} */
 
 .reset-buttons {
   font-size: 36px;
@@ -128,14 +184,15 @@
   background-color: black;
   border-color: #E1C290;
   border-radius: 50px;
-  width: 687px;
-  height: 471px;
+  width: 27vw;
+  height: 50vh;
+  top: 10vh;
+  left: 12vw; 
   align-items: center;
   justify-content: center;
   /* margin-bottom: 20%; */
-  margin-left: 10%;
-  top: 0;
-  margin-top: 7%;
+  /* margin-left: 10%;
+  margin-top: 7%; */
   /* left: 0; */
   /* right: 0; */
   /* margin: auto; */
@@ -161,10 +218,10 @@
 }
 
 .reset-card-title {
-  position: relative;
+  position: absolute;
   font-size: 36px;
   color: #E1C290;
-  top: -40px;
+  bottom: 33vh;
   /* padding-left: 20px; */
 }
 
@@ -195,76 +252,15 @@
   background-color: black;
 }
 
-  /* Customize the thumb of the range input */
-.form-range::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 19px;
-    width: 19px;
-    background-color: black;
-    border: 0.5px solid #E1C290;
-    border-radius: 50%;
-    cursor: pointer;
-    position: relative;
-    /* color: #E1C290; */
-    margin-top: -7px;
-}
 
-.form-range::-webkit-slider-thumb:active, 
-.form-range::-webkit-slider-thumb:focus {
-    background-color: #E1C290;
-    /* transform: scale(1.5); */
-    box-shadow: 0 0 15px 5px #E1C290;
-}
+.control-settings h4{
+  position: absolute;
+  color: white;
+  width: 45vw;
+  height: 5.56vh;
+  font-family: 'Advent Pro';
+  padding-left: 5%;
+  /* left: 47vw;
+  top: 46.3vh; */
 
-  /* Customize the track of the range input */
-  .form-range::-webkit-slider-runnable-track {
-    height: 2.5px;
-    background-color: white;
-  }
-  
-  /* Add some spacing between volume controls */
-  /* .mb-3 {
-    margin-bottom: 1rem;
-  }
-   */
-
-
-   .btn-1 {
-    /* background-color: #E1C290;  */
-    font-size: 36px;
-    background-color: black;
-}
-
-.card-buttons {
-    font-size: small;
-    position: absolute;
-    flex-wrap: wrap;
-    justify-content: center;
-    max-width: 1000px;
-    font-family: 'Advent Pro', sans-serif;
-    /* letter-spacing: 1000px; */
-    color :#E1C290;
-
-    /* padding: 25px; */
-    margin: 10px auto 35px;
-}
-
-.card-buttons .btn-1 {
-    /* height: 50%; */
-    color: #E1C290;
-    border-color:#E1C290;
-    border-radius: 50px;
-    font-weight: 400;
-    transition: all 0.3s ease-in-out;
-}
-
-.card-buttons .btn-1:not(:last-child) {
-    margin-right: 90px;
-}
-
-.card-buttons .btn-1:hover {
-    background-color: #E1C290;
-    color: black;
-    transform: scale(0.98); /* Slightly shrink the button when pressed */
 }

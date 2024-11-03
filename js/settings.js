@@ -56,17 +56,14 @@ function updateCardContent(buttonText, cardContent){
             break;
         case 'Control Settings':
             newContent = `
-                <div class="mb-3">
-                    <label for="MoveUp" class="form-label">Move Up</label>
-                    <select id="move-up" class="form-select">
-                        <option value="up-arrow">Up arrow</option>
-                        <option value="w">W</option>
-                    </select>
-                    <label for="MoveDown" class="form-label">Move Down</label>
-                    <select id="move-down" class="form-select">
-                        <option value="up-arrow">Down arrow</option>
-                        <option value="s">S</option>
-                    </select>
+                <div class="control-settings mb-3">
+                    <div class="move-up"> 
+                        <h4>Move Up</h4> <h5>W / </h5>
+                    </div>
+
+                    <div class="move-down"> 
+                        <h4>Move Up</h4> <h5>S / </h5>
+                    </div>
                 </div>
             `;
             break;
@@ -87,28 +84,27 @@ function updateCardContent(buttonText, cardContent){
 
             case 'Privacy Settings':
                 newContent = `
-                    <div class="row privacy-settings mb-3">
-                            <div class="col-auto">
+                    <div class=" privacy-settings mb-3">
                                 <label for="OnlineVisibility"" class="privacy-form-label">Online Status Visibility</label>
-                            </div>
-                            <div class="col-auto">
+                       
+                           
                                 <select id="online-visibility" class="form-select">
                                     <option value="invisible">Invisible</option>
                                     <option value="online">Online</option>
                                     <option value="away">Away</option>
                                     <option value="donotdisturb">Do Not Disturb</option>
                                 </select>
-                            </div>
+                         
 
-                            <div class="col-auto">
+                           
                                 <label for="ProfileVisibility" class="privacy-form-label">Profile Visibility</label>
-                            </div>
-                            <div class="col-auto">
+                           
+                            
                                 <select id="profile-visibility" class="form-select">
                                     <option value="public">Public</option>
                                     <option value="private">Private</option>
                                 </select>
-                            </div>
+                         
                     </div>
                 `;
                 break;
