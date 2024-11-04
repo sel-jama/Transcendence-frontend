@@ -56,13 +56,16 @@ function updateCardContent(buttonText, cardContent){
             break;
         case 'Control Settings':
             newContent = `
+
                 <div class="control-settings mb-3">
                     <div class="move-up"> 
-                        <h4>Move Up</h4> <h5>W / </h5>
+                        <label class="control-stg-label">Move Up</label>
+                        <h5>W / <span class="fa-solid fa-arrow-up arrow-icon"></span> </h5>
                     </div>
 
                     <div class="move-down"> 
-                        <h4>Move Up</h4> <h5>S / </h5>
+                        <label class="control-stg-label" >Move Down</label>
+                        <h5>S / <span class="fa-solid fa-arrow-down arrow-icon"></span> </h5>
                     </div>
                 </div>
             `;

@@ -184,10 +184,10 @@
   background-color: black;
   border-color: #E1C290;
   border-radius: 50px;
-  width: 27vw;
-  height: 50vh;
-  top: 10vh;
-  left: 12vw; 
+  width: 36vw;
+  height: 45vh;
+  left: 15%; 
+  top: 17%;
   align-items: center;
   justify-content: center;
   /* margin-bottom: 20%; */
@@ -205,19 +205,26 @@
   font-size: 36px;
   font-weight: 144;
   color: white;
-  justify-content: center;
-  align-items: center;
-  padding-left: 20px;
+  /* justify-content: center;
+  align-items: center; */
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  /* padding-bottom: 2%; */
 }
 
 .reset-card-text{
   /* padding-left: 20px; */
   /* padding-top: 30px; */
-  position: relative;
-  top: -20px;
+  /* position: absolute; */
+  padding-top: 2%;
+  bottom: 1vh;
 }
 
 .reset-card-title {
+  /* margin-top: 2%;
+  margin-bottom: 2%; */
+  padding-bottom: 1.5%;
   position: absolute;
   font-size: 36px;
   color: #E1C290;
@@ -227,7 +234,7 @@
 
 .reset-card-buttons {
   position: relative;
-  bottom: -20px;
+  top: 3vh;
   /* padding-left: 20px; */
 }
 
@@ -253,14 +260,40 @@
 }
 
 
-.control-settings h4{
-  position: absolute;
+.control-settings div{
+  display: flex;
+}
+
+.control-settings .control-stg-label{
+  position: relative;
   color: white;
-  width: 45vw;
+  width: 40vw;
   height: 5.56vh;
   font-family: 'Advent Pro';
   padding-left: 5%;
+  font-size: 48px;
+  font-weight: 144;
   /* left: 47vw;
   top: 46.3vh; */
-
 }
+
+.control-settings h5 {
+  font-size: 48px;
+  color: #E1C290;
+  /* display: inline-flex; */
+}
+
+.control-settings .move-up {
+  margin-bottom: 9%;
+}
+
+/* .control-settings .arrow-icon {
+  border-color: #E1C290;
+} */
+
+.move-up
+.move-down{
+  /* display: flex; */
+  padding-right: 4%;
+}
+

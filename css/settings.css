@@ -134,6 +134,7 @@ html, body {
     height: 600px;      */
     z-index: 10;                          
     box-shadow: 0px 4px 15px rgba(0,0,0,0.9);
+    background-position: center;
 }
 
 /* .card-buttons{
@@ -159,9 +160,14 @@ html, body {
     border-radius: 50px;
     font-weight: 400;
     transition: all 0.3s ease-in-out;
-    width: 20%;
-    height: 79px;
+    width: 25%;
+    height: 3%;
     top: 50px;
+    flex-wrap:wrap;
+    object-fit: contain;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 
 }
 .card-buttons .btn-1:first-child{
@@ -169,7 +175,7 @@ html, body {
 }
 
 .card-buttons .btn-1:not(:last-child) {
-    margin-right: 17%;
+    margin-right: 10%;
 }
 
 .card-buttons .btn-1:hover{
