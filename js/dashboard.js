@@ -14,7 +14,14 @@ function initializeDashboard(){
                 updateStylesheet('css/settings.css')
                 const page = document.querySelector("body");
                 page.innerHTML = templates.settings;
+                initializeNavigation();
                 initializeSettings();
+            }
+
+            if (slideTitle == 'Leaderboard'){
+                console.log(`${slideTitle} clicked`);
+                updateStylesheet('css/leaderboard.css');
+                page.innerHTML = templates.Leaderboard;
             }
         });
         

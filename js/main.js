@@ -54,9 +54,40 @@ const templates = {
 
     `,
 
-    // profile: `
+    Leaderboard: `
+            <div class="color-overlay">
+                <nav class="navbar" id="leaderboard-navbar">
+                    <div class="container-fluid">
+                        <!-- Left Button -->
+                        <button class="btn-0 left-btn btn btn-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                            </svg>
+                        </button>
+                        <!-- Right Button -->
+                        <button class="btn-0 right-btn btn btn-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </nav>
 
-    // `,
+                <div class="container-ms mt-3">
+                    <h1 class="leaderboard-title">Leaderboard</h1>
+                    <div class="container leaderboard-container">
+            
+                            <div class="card-body"> 
+                                <div class="leaderboard-buttons">
+                                    <button type="button" class="btn-1 btn btn-lg">ALL CLANS</button>
+                                    <button type="button" class="btn-1 btn btn-lg">CLAN</button>
+                                </div>
+                            </div>
+                    </div> 
+
+                </div>
+            </div>
+    `,
 };
 
 function updateStylesheet(href) {

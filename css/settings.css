@@ -181,7 +181,7 @@ html, body {
 .card-buttons .btn-1:hover{
     background-color: #E1C290;
     color: black;
-    transform: scale(0.98); /* Slightly shrink the button when pressed */
+    transform: scale(0.98); /*shrink the button when pressed */
 }
 
 .outer-buttons .btn-2{

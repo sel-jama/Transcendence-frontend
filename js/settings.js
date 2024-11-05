@@ -12,14 +12,14 @@ function initializeSettings() {
         });
     });
 
-    outerButtons.forEach(button => {
+    outerButtons.forEach(button =>{
         button.addEventListener('click', () => {
             console.log(`${button.textContent} clicked`);
             // Add functionality for each outer button
             if (button.textContent != 'Game Settings')
                 cardButtons.style.display = 'none';
             else
-                cardButtons.style.display = 'block'
+                cardButtons.style.display = 'block';
 
             updateCardContent(button.textContent, cardContent);
         });

@@ -4,6 +4,7 @@ function initializeNavigation() {
 
     leftBtn.addEventListener('click', () => {
         console.log('Left button clicked');
+        window.location.href = document.referrer;
         // Add functionality for left button (go back)
     });
 
