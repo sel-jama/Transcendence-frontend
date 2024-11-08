@@ -24,15 +24,24 @@ A modern Single-Page Application (SPA) gaming platform built with vanilla JavaSc
 - Integrate Bootstrap for UI components and styling
   
 - Game custimasation: 
-    Power-ups, attacks, or different maps for visual and interactive variety.
     A settings menu where users can change game parameters.
     Unified design across all games, ensuring a consistent visual and interactive experience on the front end.
 
 # Work status:
-✅ Dashboard Page: HTML/CSS completed, JS (for the leaderboard and settings sliders).
-✅ Settings Pages : Completed with responsive CSS, also interactive JS.
-✅ Leaderboard page: HTML/CSS completed (not interactive).
+✅ Dashboard Page: HTML/CSS and JavaScript (leaderboard and settings sliders)  
+✅ Settings Page: Complete with responsive CSS and interactive JS  
+✅ Leaderboard Page: HTML/CSS structure (non-interactive)
 
 # Currently working on:
- - Responsive CSS
- - Implementing the leaderboad page logic for interactiveness. 
+- Responsive CSS: Making styles adapt smoothly across devices
+- Leaderboard Page in js: Adding interactive features
+
+  # Device compatibility:
+      - chrome
+      - firefox
+  # Usage
+      use npx serve . or a local server like live server extention
+
+  Notes for team:
+  - This is a partial work status, other pages and features are under developement by uness.
+  - The responsiveness is not fully done so the style layout may break in some screen sizes.
