@@ -36,12 +36,12 @@ A modern Single-Page Application (SPA) gaming platform built with vanilla JavaSc
 - Responsive CSS: Making styles adapt smoothly across devices
 - Leaderboard Page in js: Adding interactive features
 
-  # Device compatibility:
+# Device compatibility:
       - chrome
       - firefox
-  # Usage
+# Usage
       use npx serve . or a local server like live server extention
 
-  Notes for team:
+# Notes for team:
   - This is a partial work status, other pages and features are under developement by uness.
   - The responsiveness is not fully done so the style layout may break in some screen sizes.
