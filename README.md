@@ -40,7 +40,7 @@ A modern Single-Page Application (SPA) gaming platform built with vanilla JavaSc
       - chrome
       - firefox
 # Usage
-      use npx serve . or a local server like live server extention
+      docker-compose up --build
 
 # Notes for team:
   - This is a partial work status, other pages and features are under developement by uness.
