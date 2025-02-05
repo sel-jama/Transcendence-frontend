@@ -1,0 +1,92 @@
+.titles1{
+    font-family: 'Advent Pro',sans-serif;
+    color: #F5DEB3;
+    font-size: 6rem;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.Background-picture{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.all-button2{
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro',sans-serif;
+    font-size: 14px;
+    color: #F5DEB3;
+    background-color:transparent; /* Wheat color similar to the image */
+    padding: -1px;  /* Increased from 10px 20px */
+     border-radius: 40px;
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    white-space: nowrap;
+}
+.all-button1{
+    position: absolute;
+    top: 88%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro',sans-serif;
+    font-size: 14px;
+    color: #F5DEB3;
+    background-color:transparent; /* Wheat color similar to the image */
+    padding: -1px;  /* Increased from 10px 20px */
+     border-radius: 40px;
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    white-space: nowrap;
+}
+
+
+.all-button1:hover, .all-button2:hover {
+    background-color:  #F5DEB3;
+    color: black;
+    border: 1px solid  #F5DEB3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+.position{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text{
+    padding: 17px;
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    top: 51%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.word-color{
+    color: #F5DEB3;
+}

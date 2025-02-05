@@ -1,0 +1,139 @@
+@baseUrl = https://localhost:8443
+@authToken ="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidHdvZmEiOmZhbHNlLCJleHAiOjE3MzU5NjA5NzYsImlhdCI6MTczNTg3NDU3Nn0.JgAL3oY70EM4QG69sWG0sCOlVsRJOITYpWo_B_WWgRc"
+
+### Health Check
+GET {{baseUrl}}/healthz
+
+### Register New User
+POST {{baseUrl}}/api/register/
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "email": "test@example.com",
+    "password": "testpass123"
+}
+
+### Register OAuth User (should work without password)
+POST {{baseUrl}}/api/register/
+Content-Type: application/json
+
+{
+    "username": "oauthuser",
+    "email": "oaduath@example.com",
+    "is_oauth": true
+}
+
+### Register Non-OAuth User without password (should fail)
+POST {{baseUrl}}/api/register/
+Content-Type: application/json
+
+{
+    "username": "abcd",
+    "email": "abcd@example.com",
+    "password": "abcd"
+}
+
+### Login User
+POST {{baseUrl}}/api/login/
+Content-Type: application/json
+
+{
+    "username": "abcd",
+     "email": "abcd@example.com",
+    "password": "abcd"
+
+}
+
+### Get User Profile (with JWT)
+GET {{baseUrl}}/api/user/
+Cookie: jwt={{authToken}}
+
+### Get User Profile (without JWT - should fail)
+GET {{baseUrl}}/api/user/
+
+### Update Profile
+POST {{baseUrl}}/api/update/
+Cookie: jwt={{authToken}}
+Content-Type: application/json
+
+{
+    "username": "updateduser",
+    "email": "updated@example.com",
+    "avatar": "https://example.com/avatar.jpg"
+}
+
+### Update Info (all required fields)
+POST {{baseUrl}}/api/updateinfo/
+Cookie: jwt={{authToken}}
+Content-Type: application/json
+
+{
+    "nickname": "testnick",
+    "clan": "testclan",
+    "avatar": "https://example.com/avatar.jpg"
+}
+
+### Update Info (missing fields - should fail)
+POST {{baseUrl}}/api/updateinfo/
+Cookie: jwt={{authToken}}
+Content-Type: application/json
+
+{
+    "nickname": "testnick"
+}
+
+### Get Leaderboard Data
+GET {{baseUrl}}/api/leadrboard
+Cookie: jwt={{authToken}}
+
+### Setup 2FA
+GET {{baseUrl}}/api/2fa/setup
+Cookie: jwt={{authToken}}
+
+### Verify 2FA
+POST {{baseUrl}}/api/2fa/verify
+Cookie: jwt={{authToken}}
+Content-Type: application/json
+
+{
+    "code": "123456"
+}
+
+### Reset Profile
+POST {{baseUrl}}/api/restprofile
+Cookie: jwt={{authToken}}
+
+### Logout
+POST {{baseUrl}}/api/logout/
+Cookie: jwt={{authToken}}
+
+### 42 Authentication
+GET {{baseUrl}}/api/auth42/
+
+### Test Invalid JWT
+GET {{baseUrl}}/api/user/
+Cookie: jwt=sdafadsfdsfa
+
+### Test OAuth Callback
+GET {{baseUrl}}/accounts/42/login/callback/?code=test_code
+
+### Test OAuth Callback Error
+GET {{baseUrl}}/accounts/42/login/callback/?error=access_denied
+
+### Token Refresh
+POST {{baseUrl}}/api/token/refresh
+Content-Type: application/json
+
+{
+    "refresh": "your_refresh_token_here"
+}
+
+### Get JWT Token
+POST {{baseUrl}}/api/token/
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "testpass123"
+}

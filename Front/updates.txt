@@ -1,0 +1,13 @@
+I change the redirecting to go in register page when the entered value is not right (just set the value to null)   
+   
+const usernameValue = username.value.length;
+                                                    if(notMatching || usernameValue > 8){
+                                                        console.log("testting");
+                                                        // Router.go("/register");
+                                                        if (usernameValue > 8) {
+                                                            showNotification('Username must be 8 characters or less');
+                                                        } else if (notMatching) {
+                                                            showNotification('Passwords do not match');
+                                                        }
+                                                        
+                                                    }

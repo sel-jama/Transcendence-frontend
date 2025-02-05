@@ -1,0 +1,143 @@
+
+.Background-container-one{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+}
+
+.Background-picture-one{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+          object-fit: cover;
+}
+
+.large-content1-one{
+          position: absolute;
+          top: 10%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          /* position: relative; */
+          font-family: 'Advent Pro', sans-serif;
+          color: #e9cc97;
+          font-size: 3rem;
+          white-space: nowrap;
+}
+
+.cardOne{
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+}
+
+.button1-one{
+          position: absolute;
+          top: 40%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-family: 'Advent Pro';
+          /* font-family: Consolas; */
+          font-size: 15px;
+          color: #F5DEB3;
+          background-color: black; /* Wheat color similar to the image */
+          padding: 1px; /* Increased from 10px 20px */
+          border-radius: 30px; /* Increased from 20px for a more rounded look */
+          /* text-decoration: none; In case it's an <a> tag */
+          display: inline-block;
+          transition: all 0.3s ease; /* Smooth transition for hover effects */
+          /* border: none; Remove default button border */
+          /* cursor: pointer; */
+          border: 1px solid #F5DEB3;
+}
+
+.button1-one:hover {
+          background-color: rgb(134, 49, 49);
+          color: #F5DEB3;
+          border: 2px solid #000700;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button2-one{
+          position: absolute;
+          top: 70%;
+          left: 45%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-family: 'Advent Pro';
+          /* font-family: Georgia; */
+          font-size: 13px;
+          color: #F5DEB3;
+          background-color: black; /* Wheat color similar to the image */
+          padding: 1px; /* Increased from 10px 20px */
+          border-radius: 30px; /* Increased from 20px for a more rounded look */
+          /* text-decoration: none; In case it's an <a> tag */
+          display: inline-block;
+          transition: all 0.3s ease; /* Smooth transition for hover effects */
+          /* border: none; Remove default button border */
+          /* cursor: pointer; */
+          border: 1px solid #F5DEB3;
+}
+
+.button2-one:hover{
+          background-color: rgb(134, 49, 49);
+          color: #F5DEB3;
+          border: 2px solid #000700;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button3-one{
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-family: 'Advent Pro';
+          font-size: 13px;
+          color: #F5DEB3;
+          background-color: black; /* Wheat color similar to the image */
+          padding: 6px; /* Increased from 10px 20px */
+          border-radius: 30px; /* Increased from 20px for a more rounded look */
+          /* text-decoration: none; In case it's an <a> tag */
+          display: inline-block;
+          transition: all 0.3s ease; /* Smooth transition for hover effects */
+          /* border: none; Remove default button border */
+          /* cursor: pointer; */
+          border: 1px solid #F5DEB3;
+}
+
+.button3-one:hover {
+          background-color: rgb(134, 49, 49);
+          color: #F5DEB3;
+          border: 2px solid #000700;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+      
+
+
+.flow-one{
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          filter: blur(15px);
+}
+
+.paragra-one{
+          font-size: 1rem;
+          position: absolute;
+          top: 60%;
+          left: 45%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+}
+      

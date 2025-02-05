@@ -1,0 +1,20 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+#canvas {
+	background-color: #1a1f1a;
+}
+
+body {
+	overflow: hidden;
+}
+
+h1 {
+	color: white;
+	font-family: "Advent Pro", sans-serif;
+	font-size: 3rem;
+	position: absolute;
+	bottom: 100px;
+}

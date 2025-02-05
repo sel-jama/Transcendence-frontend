@@ -1,0 +1,79 @@
+version: '3.8'
+
+networks:
+  pinpong:
+    driver: bridge  
+
+volumes:
+  db_data:
+  static_data:
+  media_data:
+  pgadmin_data:
+
+services:
+  db:
+    image: postgres:latest
+    container_name: postgresql
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - pinpong
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  backend:
+    build: ./Back/backend
+    container_name: backend
+    volumes:
+      - ./Back/backend:/app
+      - static_data:/app/staticfiles  
+      - media_data:/app/media
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+    env_file:
+      - .env
+    networks:
+      - pinpong  
+    restart: always
+
+  pgadmin:
+    container_name: pgadmin4
+    image: dpage/pgadmin4
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - 8080:80
+    networks:
+      - pinpong 
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin  
+
+  modesecnginx:
+    container_name: modesecnginx
+    build: ./nginx
+    volumes:
+      - static_data:/app/static
+      - media_data:/app/media
+      - ./Front:/usr/share/nginx/html  
+    ports:
+      - '8443:8443'
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    networks:
+      - pinpong  
+    restart: always

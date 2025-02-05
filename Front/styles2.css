@@ -1,0 +1,90 @@
+.Background-picture{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.success-message {
+    /* top: 0%; */
+    font-family: 'Advent Pro', sans-serif;
+    position: absolute;
+    left: 45%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 8px ;
+    border-radius: 35px;
+    text-align: center;
+    /* max-width: 400px; */
+    margin: 50px auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 5s ease-out;
+    z-index: 1;
+}
+
+.success-message::before {
+    content: '✓';
+    margin-right: 10px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.success-message.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.image2{
+    position: absolute;
+    height: 93%;
+    width: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image3{
+    position: absolute;
+    height: 93%;
+    width: auto;
+    top: 53%;
+    left: 47%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button4{
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 13px;
+    color: #F5DEB3;
+    background-color: transparent; /* Wheat color similar to the image */
+    padding: 1px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    z-index: 1;
+}
+
+.button4:hover {
+    background-color: black;
+    color: #F5DEB3;
+    border: 2px solid #F5DEB3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}

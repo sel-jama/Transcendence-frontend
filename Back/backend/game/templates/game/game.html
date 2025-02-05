@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Game</title>
+
+		<link rel="stylesheet" href="{% static 'arena/style.css' %}">
+		<link rel="stylesheet" href="{% static 'arena/game_style.css' %}">
+	</head>
+
+	<body>
+		<!--~~~~~~~~~~~~~~~~~~~~~~ Game Config Section ~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="preGameView">
+			<!--~~~~ Game Create/Join ~~~~-->
+			<div id="createJoin">
+				<button id="createButton" class="continue-button enabled">Create a Game</button>
+				<button id="joinButton" class="continue-button enabled">Join a Game</button>
+			</div>
+
+			<!--~~~~ Arena Selection ~~~~-->
+			<div class="arena-selection" id="arenaSelection">
+				<div class="arena-buttons">
+					<button class="arena-button" id="CASTLE">Castle</button>
+					<button class="arena-button" id="COLOSSEUM">Colosseum</button>
+					<button class="arena-button" id="FOREST">Forest</button>
+				</div>
+				<div class="toggle-container">
+					<label class="toggle-switch">
+						<input type="checkbox" id="powerUpsToggle">
+						<span class="slider"></span>
+					</label>
+					<span style="font-size: 30px; color: white;">Enable Power Ups</span>
+				</div>
+				<button id="arenaStartButton" class="continue-button">Continue</button>
+			</div>
+		</div>
+
+		<!--~~~~~~~~~~~~~~~~~~~~~~ Game Section ~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="gameView">
+			<div class="overlay" id="preGameOverlay">
+				<div id="waitingText" class="instruction center-instruction">
+					Waiting for opponent...
+				</div>
+				<button id="errorLobbyButton" onclick="window.location.href='/game/'">Return to Lobby</button>
+
+				<div class="matchmaking-container" id="matchMakingContainer">
+					<div class="match-box">
+						<div class="players">
+							<span class="player1">here</span>
+							<span class="vs">vs</span>
+							<span class="player2">there</span>
+						</div>
+						<span class="timer">Starting in 5s</span>
+					</div>
+				</div>
+
+			</div>
+        </div>
+
+		<!--~~~~~~~~~~~~~~~~~~~~~~ Post-Game Section ~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="postGameView">
+			<div class="overlay" id="postGameOverlay">
+				<div id="winLoseMessage" class="hidden center-message"></div>
+				<div id="scoreDisplay" class="hidden center-instruction">0 - 0</div>
+				<div id="player1Label" class="hidden left-instruction">Player 1</div>
+				<div id="player2Label" class="hidden right-instruction">Player 2</div>
+				<button id="lobbyButton" class="hidden">Go to Lobby</button>
+			</div>
+        </div>
+		<canvas class="webgl"></canvas>
+
+		<script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three/examples/jsm/"
+            }
+        }
+		</script>
+
+		<script type="module"> 
+			//import { GameSession } from "{% static 'arena/Main.js' %}";
+			//const gameSession = new GameSession(); // You can set the initial ID here
+			//gameSession.startGame();
+		</script>
+
+		<script type="module">
+			import { GameSession } from "{% static 'arena/Main.js' %}";
+			const gameSession = new GameSession();
+
+			//~~~~~~~~~~~~~~~~~~~~~~ Game Create/Join Section ~~~~~~~~~~~~~~~~~~~~~~
+		    const createJoin = document.getElementById('createJoin');
+		    const createButton = document.getElementById('createButton');
+		    const joinButton = document.getElementById('joinButton');
+		    const gameView = document.getElementById('gameView');
+
+		    createButton.addEventListener('click', () => {
+		        arenaSelection.style.display = 'flex';
+		        createJoin.style.display = 'none';
+		    });
+
+		    joinButton.addEventListener('click', () => {
+		        createJoin.style.display = 'none';
+		        gameView.style.display = 'flex';
+				gameSession.startGame();
+		    });
+
+			function showError(message) {
+				const waitingText = document.getElementById('waitingText');
+				const errorLobbyButton = document.getElementById('errorLobbyButton');
+				const matchMakingContainer = document.getElementById('matchMakingContainer');
+				
+				waitingText.textContent = message;
+				waitingText.classList.add('error-text');
+				errorLobbyButton.style.display = 'block';
+				matchMakingContainer.style.display = 'none';
+			}
+
+			gameSession.onError = function(message) {
+				showError(message);
+			};
+
+			//~~~~~~~~~~~~~~~~~~~~~~ Arena Selection Section ~~~~~~~~~~~~~~~~~~~~~~
+		    const arenaButtons = document.querySelectorAll('.arena-button');
+		    const arenaStartButton = document.getElementById('arenaStartButton');
+		    const arenaSelection = document.getElementById('arenaSelection');
+		    const preGameView = document.getElementById('preGameView');
+		
+		    arenaButtons.forEach(button => {
+		        button.addEventListener('click', () => {
+		            arenaButtons.forEach(btn => btn.classList.remove('selected'));
+		            button.classList.add('selected');
+		            arenaStartButton.classList.add('enabled');
+		        });
+		    });
+		
+		    arenaStartButton.addEventListener('click', () => {
+		        if (arenaStartButton.classList.contains('enabled')) {
+		            const selectedArena = document.querySelector('.arena-buttons button.selected');
+		            const powerUpsEnabled = document.getElementById('powerUpsToggle').checked;
+		            
+		            if (selectedArena) {
+		                // Store arena settings
+		                sessionStorage.setItem('gameSettings', JSON.stringify({
+		                    arena: selectedArena.id,
+		                    powerUpsEnabled: powerUpsEnabled
+		                }));
+		
+		                // Switch to Game
+		                arenaSelection.style.display = 'none';
+		                preGameView.style.display = 'none';
+		                gameView.style.display = 'flex';
+
+						const gameSettings = JSON.parse(sessionStorage.getItem('gameSettings')) || {
+							arena: 'CASTLE',
+							powerUpsEnabled: true
+						};
+						gameSession.startGame(gameSettings);
+		            }
+		        }
+		    });
+
+
+			document.getElementById('lobbyButton').addEventListener('click', function() {
+				//----------------------------here you should hide the game and display the lobby--------------------------------
+				// Reset the canvas
+				const oldCanvas = document.querySelector('.webgl');
+				if (oldCanvas) {
+					oldCanvas.remove();
+				}
+				const newCanvas = document.createElement('canvas');
+				newCanvas.className = 'webgl';
+
+				window.location.href = '/game/';
+			});
+		</script>
+	</body>
+</html>
+

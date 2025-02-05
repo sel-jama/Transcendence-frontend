@@ -1,0 +1,490 @@
+
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.navbar {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        background-color: #f8f9fa; /* Light gray background */
+        padding: 10px 20px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+
+
+
+.navbar button {
+        background-color: #007bff; /* Blue color */
+        color: white;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+.navbar button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }
+
+
+.Background-container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.Background-picture{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+
+.overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 1;
+    width: 40%;
+    height: 80vh;
+    display: flex;
+}
+
+.container p-0{
+    padding: 50px;
+    margin: auto;
+    overflow: auto;
+}
+
+.display-1{
+    position: absolute;
+    top: 15%;
+    left: 4%;
+    font-family: Geneva, Verdana, sans-serif;
+    color: #e9cc97;
+    /* border: 2px solid #F5DEB3; */
+
+    /* white-space: nowrap; */
+}
+
+.large-content1{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* position: relative; */
+    font-family: 'Advent Pro', sans-serif;
+    color: #e9cc97;
+    font-size: 3rem;
+    white-space: nowrap;
+}
+
+.button-{
+    position: absolute;
+    top: 55%;
+    left: 4%;
+    font-family: 'Advent Pro', sans-serif;
+    /* font-size: 15px; */
+    color: #f0d198;
+    background-color: black; /* Wheat color similar to the image */
+    /* padding: 0px; Increased from 10px 20px */
+    border-radius: 23px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 2px solid black;
+}
+.fas {
+    font-size: 30px;
+}
+
+.button-:hover{
+        background-color: #972e2e;
+}
+
+#top-right-image{
+    position: fixed;
+    top: 0;
+    right: 100px;
+    max-width: 100%;
+    height: auto;
+}
+
+#angled{
+    position: fixed;
+    top :86%;
+    left: 40%;
+    /* bottom: 0; */
+    /* width: 300px;  */
+    transform: rotate(-38deg) translateY(10%);
+    /* transform-origin: bottom right;
+    z-index: 1000; */
+    
+    /* right: 0; */
+    bottom: 1000%;
+    max-width: 100%;
+    /* height: auto; */ 
+}
+
+.flow{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(15px);
+}
+
+.card{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button1{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 15px;
+    color: #F5DEB3;
+    background-color: black; /* Wheat color similar to the image */
+    padding: 1px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+}
+
+
+.paragra2{
+    font-family: 'Advent Pro', sans-serif;
+    color: #F5DEB3;
+    font-size: 5rem;
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.paragra{
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 1rem;
+    position: absolute;
+    top: 60%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button2{
+    position: absolute;
+    top: 75%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 13px;
+    color: #F5DEB3;
+    background-color: black; /* Wheat color similar to the image */
+    padding: 1px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+}
+
+.button3{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 13px;
+    color: #F5DEB3;
+    background-color: black; /* Wheat color similar to the image */
+    padding: 6px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+}
+
+.button-google{
+    position: absolute;
+    top: 67%;
+    left: 46%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 13px;
+    color: #F5DEB3;
+    background-color: black; /* Wheat color similar to the image */
+    padding: 6px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+}
+
+
+.button-google:hover{
+    background-color: rgb(134, 49, 49);
+    color: F5DEB3;
+    border: 2px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button3:hover {
+    background-color: rgb(134, 49, 49);
+    color: F5DEB3;
+    border: 2px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button1:hover {
+    background-color: rgb(134, 49, 49);
+    color: F5DEB3;
+    border: 2px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.button2:hover {
+    background-color: rgb(134, 49, 49);
+    color: F5DEB3;
+    border: 2px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+.image2{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image3{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.button4{
+    position: absolute;
+    top: 92%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 13px;
+    color: #F5DEB3;
+    background-color: transparent; /* Wheat color similar to the image */
+    padding: 1px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    z-index: 1;
+}
+
+.button4:hover {
+    background-color: black;
+    color: #F5DEB3;
+    border: 2px solid #F5DEB3;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.card1{
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* .image-card */
+}
+
+.card2{
+    position: absolute;
+    top: 60%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.card3{
+    position: absolute;
+    top: 60%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.image-card{
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
+    
+    /* text-align: center; */
+}
+
+.titles{
+    font-family: 'Advent Pro', sans-serif;
+    color: #F5DEB3;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.all-button{
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro';
+    font-size: 15px;
+    color: #F5DEB3;
+    background-color:transparent; /* Wheat color similar to the image */
+    padding: 1px;
+    margin: 10px; /* Increased from 10px 20px */
+    border-radius: 30px; /* Increased from 20px for a more rounded look */
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 2px solid #F5DEB3;
+    white-space: nowrap;
+}
+
+
+.all-button:hover {
+    background-color: black;
+    color: F5DEB3;
+    border: 1px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#first-img{
+    width: 15%;
+    height: auto;
+}
+
+.titles1{
+    font-family: 'Advent Pro', sans-serif;
+    color: #F5DEB3;
+    font-size: 6rem;
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.all-button2{
+    position: absolute;
+    top: 83%;
+    left: 74%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 14px;
+    color: #F5DEB3;
+    background-color:transparent; /* Wheat color similar to the image */
+    padding: -1px;  /* Increased from 10px 20px */
+     border-radius: 40px;
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    white-space: nowrap;
+}
+.all-button1{
+    position: absolute;
+    top: 83%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 14px;
+    color: #F5DEB3;
+    background-color:transparent; /* Wheat color similar to the image */
+    padding: -1px;  /* Increased from 10px 20px */
+     border-radius: 40px;
+    /* text-decoration: none; In case it's an <a> tag */
+    display: inline-block;
+    transition: all 0.5s ease; /* Smooth transition for hover effects */
+    /* border: none; Remove default button border */
+    /* cursor: pointer; */
+    border: 1px solid #F5DEB3;
+    white-space: nowrap;
+}
+
+
+.all-button1:hover, .all-button2:hover {
+    background-color: rgb(134, 49, 49);
+    color: F5DEB3;
+    border: 1px solid #000700;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+#paddle-text{
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 7rem;
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lobby</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #408563;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #306d4b;
+        }
+    </style>
+</head>
+<body>
+    <button id="onlineMatch">Online Match</button>
+
+    <button id="offlineMatch">Offline Match</button>
+
+    <button id="offlineTournament">Offline Tournament</button>
+
+    <script>
+        document.getElementById('onlineMatch').addEventListener('click', async () => {
+			window.location.href = `waiting/`;
+        });
+
+        document.getElementById('offlineMatch').addEventListener('click', async () => {
+			window.location.href = `pre_offline/`;
+        });
+
+        document.getElementById('offlineTournament').addEventListener('click', async () => {
+			window.location.href = `pre_offline_tournament/`;
+        });
+		
+    </script>
+</body>
+</html>
+

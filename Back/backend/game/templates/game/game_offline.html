@@ -1,0 +1,299 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game</title>
+        <link rel="stylesheet" href="{% static 'game_offline/style.css' %}">
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;700&display=swap');
+
+            body {
+                font-family: 'Advent Pro', sans-serif;
+            }
+
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%; height: 100%;
+                background: rgba(0, 0, 0, 0);
+                backdrop-filter: blur(5px);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 1000;
+                cursor: pointer;
+                opacity: 1;
+                transition: opacity 0.5s ease-in-out;
+            }
+
+            .overlay.fade-out {
+                opacity: 0;
+            }
+
+            .instruction {
+                color: white; padding: 70px;
+                font-size: 24px;
+                text-align: center;
+                pointer-events: none;
+                opacity: 1;
+                transition: opacity 0.5s ease-in-out;
+            }
+
+            .fade-out .instruction {
+                opacity: 0;
+            }
+
+            .left-instruction, .right-instruction {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                transform: translateY(-10%);
+            }
+
+            .key-container {
+                display: flex;
+                gap: 10px;
+                margin-top: 10px;
+            }
+
+            .key-square {
+                width: 50px;
+                height: 50px;
+                border: 2px solid #E1C290;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 20px;
+                color: white;
+            }
+
+            .center-instruction {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 28px;
+                color: white;
+                animation: fadeColor 2s infinite;
+                pointer-events: none;
+            }
+
+            @keyframes fadeColor {
+                0%, 100% {
+                    color: white;
+                }
+                50% {
+                    color: grey;
+                }
+            }
+
+            canvas.webgl {
+                position: fixed;
+                top: 0;
+                left: 0;
+                outline: none;
+            }
+        </style>
+
+		<style>
+			.center-message {
+				position: absolute;
+				top: 40%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				font-size: 24px;
+				color: #FFD700; /* Golden color for win/loss message */
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#scoreDisplay {
+			    position: absolute;
+			    top: 50%;
+			    left: 50%;
+			    transform: translate(-50%, -50%);
+			    font-size: 32px;
+			    color: white;
+			    text-align: center;
+			}
+
+			#player1Label,
+			#player2Label {
+			    position: absolute;
+			    top: 50%;
+			    font-size: 24px;
+			    color: white;
+			    font-weight: bold;
+			}
+			
+			#player1Label {
+			    left: 10%;
+			    transform: translateY(-50%);
+			}
+			
+			#player2Label {
+			    right: 10%;
+			    transform: translateY(-50%);
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			#lobbyButton {
+				position: absolute;
+				top: 60%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				padding: 10px 20px;
+				font-size: 18px;
+				background-color: #408563;
+				color: white;
+				border: none;
+				border-radius: 5px;
+				cursor: pointer;
+				transition: background-color 0.3s;
+			}
+
+			#lobbyButton:hover {
+				background-color: #306d4b;
+			}
+
+		</style>
+
+    </head>
+    <body>
+        <div class="overlay" id="gameOverlay">
+            <div class="instruction left-instruction">
+                Player 1
+                <div class="key-container">
+                    <div class="key-square">W</div>
+                    <div class="key-square">S</div>
+                </div>
+            </div>
+            <div class="instruction center-instruction">
+                Click to Start
+            </div>
+            <div class="instruction right-instruction">
+                Player 2
+                <div class="key-container">
+                    <div class="key-square">↑</div>
+                    <div class="key-square">↓</div>
+                </div>
+            </div>
+
+			<div id="winLoseMessage" class="hidden center-message"></div>
+			<div id="scoreDisplay" class="hidden center-instruction">0 - 0</div>
+			<div id="player1Label" class="hidden left-instruction">Player 1</div>
+			<div id="player2Label" class="hidden right-instruction">Player 2</div>
+			<button id="lobbyButton" class="hidden">Go to Lobby</button>
+        </div>
+        <canvas class="webgl"></canvas>
+        <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three/examples/jsm/"
+            }
+        }
+        </script>
+        <script type="module"> 
+            import {startGame} from "{% static 'game_offline/Main.js' %}";
+			const gameSettings = JSON.parse(localStorage.getItem('gameSettings')) || {
+			arena: 'CASTLE',  // Default values
+			powerUpsEnabled: true
+			};
+            startGame(gameSettings);
+        </script>
+        <script>
+            document.getElementById('gameOverlay').addEventListener('click', function(event) {
+
+                const overlay = this;
+
+				// Add the hidden class to all text elements
+				const textElements = document.querySelectorAll('.instruction, .key-container, .key-square');
+
+				textElements.forEach(element => {
+					element.classList.add('hidden');
+				});
+
+                // Add the fade-out class to trigger the transition
+                overlay.classList.add('fade-out');
+                
+                // Wait for the transition to complete before removing the element
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                }, 500);
+
+                // Trigger click on canvas after fade
+                setTimeout(() => {
+                    const canvas = document.querySelector('.webgl');
+                    canvas.dispatchEvent(new MouseEvent('click', {
+                        bubbles: true,
+                        cancelable: true,
+                        view: window
+                    }));
+                }, 250); // Trigger halfway through the fade for smoother feeling
+            }, { once: true });
+
+			// Handle game end for tournament
+			function handleGameEnd(winner, score) {
+				const tournamentState = JSON.parse(localStorage.getItem('tournamentState'));
+			 //if (tournamentState) {
+			 //	const currentMatch = tournamentState.matches[tournamentState.currentMatch];
+			 //	currentMatch.completed = true;
+			 //	currentMatch.winner = winner;
+			 //	currentMatch.score = score;
+			 //	localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+
+			 //	// Return to tournament page
+			 //	document.getElementById('lobbyButton').addEventListener('click', function() {
+			 //		window.location.href = '/game/pre_offline_tournament';  // Update this to your tournament page URL
+			 //	});
+			 //}
+
+
+				if (tournamentState) {
+					console.log(tournamentState.isFinal)
+					if (tournamentState.isFinal) {
+						tournamentState.finals.completed = true;
+						tournamentState.finals.winner = winner;
+						tournamentState.finals.score = score;
+					}
+					else {
+						const currentMatch = tournamentState.matches[tournamentState.currentMatch];
+						currentMatch.completed = true;
+						currentMatch.winner = winner;
+						currentMatch.score = score;
+
+
+					}
+					localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+
+					// Return to tournament page
+					window.location.href = '/game/pre_offline_tournament';
+				}
+
+				else {
+					// Normal game end handling
+					document.getElementById('lobbyButton').addEventListener('click', function() {
+					window.location.href = '/game/';
+					});
+				}
+			}
+		</script>
+
+
+
+
+
+
+
+
+    </body>
+</html>

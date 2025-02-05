@@ -1,0 +1,146 @@
+.Background-container-one{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+/* 
+.fa-container{
+    position: relative;
+}
+
+.dv-container input {
+    position: absolute;
+    height: 9vh;
+    width: 4vw;
+    border-radius: 25px;
+    border: 0.1em solid #E1C290;
+    color: #E1C290;
+    background-color: black;
+    font-size: 36px;
+    font-family: 'Advent Pro', sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+  } */
+  
+  .digit-verif-card {
+    position: absolute;
+    background-image: url('images2/card.webp');
+
+    /* background-color: black; */
+    width: 40%;
+    height: 50%;
+    border-radius: 50px;
+    border: 0.05em solid #E1C290;
+    font-family: 'Advent Pro', sans-serif;
+    bottom: 25vh;
+    left: 25vw;
+    display: flex;
+    flex-direction: row;
+    /* opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease; */
+  }
+  
+  .digit-verif-card .dv-card-title{
+    font-size: 36px;
+    color: black;
+    display: flex;
+    justify-content: left;
+    padding-left: 2vw;
+    padding-top: 1.5vh;
+    font-weight: 400;
+  }
+  
+  .digit-verif-card .dv-description {
+    color: white;
+    font-size: 36px;
+    justify-content: center;
+    padding-left: 4vw;
+    font-weight: 144;
+  }
+  
+  .digit-verif-card .dv-container {
+    position: absolute;
+    width: 5vw;
+    height: 14vh;
+    /* margin-left: 25vw; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.7vw;
+    top: 20vh;
+    left: 17vw;
+    z-index: 100000;
+  }
+  
+  .dv-container input {
+    margin-top: 30vh;
+    height: 9vh;
+    width: 4vw;
+    border-radius: 25px;
+    border: 0.1em solid #E1C290;
+    color: #E1C290;
+    font-size: 36px;
+    font-family: 'Advent Pro', sans-serif;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+  }
+  
+
+
+.Background-picture-one{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.large-content1-one{
+    position: absolute;
+    top: 15%;
+    left: 49%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /* position: relative; */
+    font-family: 'Advent Pro', sans-serif;
+    color: #e9cc97;
+    font-size: 5rem;
+    white-space: nowrap;
+}
+
+.paragraph{
+    position:absolute;
+    font-family: 'Advent Pro', sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    top:30%;
+    left:49%;
+}
+
+.cardOne{
+    position: absolute; 
+    top: 13%;
+    left: 36%; 
+    transform: rotate(90deg);
+    text-align: center;
+    border-radius: 9%;
+}
+
+.flow-one{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    filter: blur(15px);
+}

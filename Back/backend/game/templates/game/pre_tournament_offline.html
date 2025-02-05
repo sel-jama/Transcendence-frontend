@@ -1,0 +1,537 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Tournament</title>
+		<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@400;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="{% static 'game_offline/offline_tournament_style.css' %}">
+	</head>
+
+	<body>
+		<!--~~~~~~~~~~~~~~~~~~~~~~ Arena Selection Section ~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="preGameView">
+			<div class="arena-selection" id="arenaSelection">
+				<div class="arena-buttons">
+					<button class="arena-button" id="CASTLE">Castle</button>
+					<button class="arena-button" id="COLOSSEUM">Colosseum</button>
+					<button class="arena-button" id="FOREST">Forest</button>
+				</div>
+				<div class="toggle-container">
+					<label class="toggle-switch">
+						<input type="checkbox" id="powerUpsToggle">
+						<span class="slider"></span>
+					</label>
+					<span style="font-size: 30px">Enable Power Ups</span>
+				</div>
+				<button id="arenaStartButton" class="continue-button">Continue</button>
+			</div>
+			
+			<!--~~~~~~~~~~~~~~~~~~~~~~ Players Naming Section ~~~~~~~~~~~~~~~~~~~~~~-->
+			<div class="player-setup" id="playerSetup">
+				<h1>Enter Participant Names</h1>
+				<div class="input-container">
+					<input type="text" placeholder="Player 1" class="player-input">
+					<input type="text" placeholder="Player 2" class="player-input">
+					<input type="text" placeholder="Player 3" class="player-input">
+					<input type="text" placeholder="Player 4" class="player-input">
+				</div>
+				<button id="playerContinueBtn" class="continue-button">Continue</button>
+			</div>
+		
+			<!--~~~~~~~~~~~~~~~~~~~~~~ Matchs Display Section ~~~~~~~~~~~~~~~~~~~~~~-->
+			<div class="matchmaking-container" id="matchmakingContainer">
+				<div class="match-box">
+					<div class="players">
+						<span class="player1"></span>
+						<span class="vs">vs</span>
+						<span class="player2"></span>
+					</div>
+					<button class="play-button">Play</button>
+				</div>
+				<div class="match-box">
+					<div class="players">
+						<span class="player3"></span>
+						<span class="vs">vs</span>
+						<span class="player4"></span>
+					</div>
+					<button class="play-button">Play</button>
+				</div>
+			</div>
+
+			<!--~~~~~~~~~~~~~~~~~~~~~~ Final Section ~~~~~~~~~~~~~~~~~~~~~~-->
+			<button class="finals-button" id="finalsButton">Proceed to Finals</button>
+				<div class="finals-container" id="finalsContainer">
+					<div class="match-box">
+						<div class="players">
+							<span class="finals-player1"></span>
+							<span class="vs">vs</span>
+							<span class="finals-player2"></span>
+						</div>
+						<button class="play-button">Play</button>
+					</div>
+				</div>
+				<div class="tournament-winner" id="tournamentWinner">
+					<div class="trophy-icon">🏆</div>
+					<div class="winner-text"></div>
+					<button id="lobbyButton" class="finals-button">Go to Lobby</button>
+				</div>
+		</div>
+
+		<!--~~~~~~~~~~~~~~~~~~~~~~ Game Section ~~~~~~~~~~~~~~~~~~~~~~-->
+		<div id="gameView">
+		    <div class="overlay" id="gameOverlay">
+		        <div class="instruction left-instruction">
+		            Player 1
+		            <div class="key-container">
+		                <div class="key-square">W</div>
+		                <div class="key-square">S</div>
+		            </div>
+		        </div>
+		        <div class="instruction center-instruction">
+		            Click to Start
+		        </div>
+		        <div class="instruction right-instruction">
+		            Player 2
+		            <div class="key-container">
+		                <div class="key-square">↑</div>
+		                <div class="key-square">↓</div>
+		            </div>
+		        </div>
+		        <div id="winLoseMessage" class="hidden center-message"></div>
+		        <div id="scoreDisplay" class="hidden center-instruction">0 - 0</div>
+		        <div id="player1Label" class="hidden left-instruction">Player 1</div>
+		        <div id="player2Label" class="hidden right-instruction">Player 2</div>
+		        <button id="tournamentButton" class="tournament-button">Back</button>
+		    </div>
+		    <canvas class="webgl"></canvas>
+		</div>
+
+		<script type="importmap">
+			{
+				"imports": {
+					"three": "https://unpkg.com/three/build/three.module.js",
+					"three/addons/": "https://unpkg.com/three/examples/jsm/"
+				}
+			}
+		</script>
+		
+		<script>
+		
+			window.addEventListener('popstate', clearTournamentData);
+			function clearTournamentData() {
+				localStorage.removeItem('tournamentState');
+				localStorage.removeItem('gameSettings');
+			}
+		
+			// Tournament State Management
+			const initializeTournamentState = (players) => {
+				const tournamentState = {
+					players: players,
+					matches: [
+						{
+							player1: players[0],
+							player2: players[1],
+							winner: null,
+							score: null,
+							completed: false
+						},
+						{
+							player1: players[2],
+							player2: players[3],
+							winner: null,
+							score: null,
+							completed: false
+						}
+					],
+					finals: {
+		                player1: null,
+		                player2: null,
+		                winner: null,
+		                score: null,
+		                completed: false
+		            },
+					isFinal: false,
+					currentMatch: 0,
+				};
+				localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+			};
+		
+			//~~~~~~~~~~~~~~~~~~~~~~ Arena Selection Section ~~~~~~~~~~~~~~~~~~~~~~
+		    const arenaButtons = document.querySelectorAll('.arena-button');
+		    const arenaStartButton = document.getElementById('arenaStartButton');
+		    const arenaSelection = document.getElementById('arenaSelection');
+		    const playerSetup = document.getElementById('playerSetup');
+		
+		    arenaButtons.forEach(button => {
+		        button.addEventListener('click', () => {
+		            arenaButtons.forEach(btn => btn.classList.remove('selected'));
+		            button.classList.add('selected');
+		            arenaStartButton.classList.add('enabled');
+		        });
+		    });
+		
+		    arenaStartButton.addEventListener('click', () => {
+		        if (arenaStartButton.classList.contains('enabled')) {
+		            const selectedArena = document.querySelector('.arena-buttons button.selected');
+		            const powerUpsEnabled = document.getElementById('powerUpsToggle').checked;
+		            
+		            if (selectedArena) {
+		                // Store arena settings
+		                localStorage.setItem('gameSettings', JSON.stringify({
+		                    arena: selectedArena.id,
+		                    powerUpsEnabled: powerUpsEnabled
+		                }));
+		
+		                // Switch to player setup
+		                arenaSelection.style.display = 'none';
+		                playerSetup.style.display = 'flex';
+		            }
+		        }
+		    });
+		
+			//~~~~~~~~~~~~~~~~~~~~~~ Players Naming Section ~~~~~~~~~~~~~~~~~~~~~~
+		    const inputs = document.querySelectorAll('.player-input');
+		    const playerContinueBtn = document.getElementById('playerContinueBtn');
+		    const matchmakingContainer = document.getElementById('matchmakingContainer');
+		
+		    function checkInputs() {
+		        const allFilled = Array.from(inputs).every(input => input.value.trim() !== '');
+		        if (allFilled) {
+		            playerContinueBtn.classList.add('enabled');
+		        } else {
+		            playerContinueBtn.classList.remove('enabled');
+		        }
+		    }
+		
+		    inputs.forEach(input => {
+		        input.addEventListener('input', checkInputs);
+		    });
+		
+			
+			playerContinueBtn.addEventListener('click', () => {
+				const players = Array.from(inputs).map(input => input.value.trim());
+				initializeTournamentState(players);
+				updateMatchDisplay();
+			});
+		
+			//~~~~~~~~~~~~~~~~~~~~~~ Matches Display Section ~~~~~~~~~~~~~~~~~~~~~~
+			function updateMatchDisplay() {
+				//~~~~~~~ Normal Match ~~~~~~~
+				const tournamentState = JSON.parse(localStorage.getItem('tournamentState'));
+		   
+				// Hide other sections
+				playerSetup.style.display = 'none';
+				arenaSelection.style.display = 'none';
+		   
+				// Show matchmaking
+				matchmakingContainer.style.display = 'flex';
+		
+				// Update match boxes with players and results
+				document.querySelector('.player1').textContent = tournamentState.matches[0].player1;
+				document.querySelector('.player2').textContent = tournamentState.matches[0].player2;
+				document.querySelector('.player3').textContent = tournamentState.matches[1].player1;
+				document.querySelector('.player4').textContent = tournamentState.matches[1].player2;
+		
+				// Update match boxes with results if available
+				const matchBoxes = document.querySelectorAll('.match-box');
+				let completedMatches = 0;
+		
+				tournamentState.matches.forEach((match, index) => {
+					const matchBox = matchBoxes[index];
+					const playButton = matchBox.querySelector('.play-button');
+		       
+					if (match.completed) {
+						completedMatches++
+		
+						// Add score display
+						const scoreDisplay = matchBox.querySelector('.score-display') || document.createElement('div');
+						scoreDisplay.className = 'score-display';
+						scoreDisplay.textContent = match.score;
+						matchBox.insertBefore(scoreDisplay, playButton);
+		           
+						// Update winner styling
+						if (match.winner) {
+							let playerClass = '';
+		           
+							if (index === 0) {
+								playerClass = match.winner === '1' ? '.player1' : '.player2';
+							} else {
+								playerClass = match.winner === '1' ? '.player3' : '.player4';
+							}
+		           
+							const playerElement = matchBox.querySelector(playerClass);
+							if (playerElement) {
+								playerElement.style.color = '#E1C290';
+							} else {
+								//console.warn(`Player element ${playerClass} not found in match ${index}`);
+							}
+						}
+						playButton.style.display = 'none';
+					}
+				});
+		
+				//~~~~~~~ Final Section ~~~~~~~
+		        const finalsButton = document.getElementById('finalsButton');
+		        const finalsContainer = document.getElementById('finalsContainer');
+		        
+			    // Show finals button when both semifinals are complete
+		        if (completedMatches === 2 && !tournamentState.finals.completed) {
+		
+		            finalsButton.style.display = 'block';
+		
+		            // Set up finals players if not already set
+		            if (!tournamentState.finals.player1) {
+		                const match1Winner = tournamentState.matches[0].winner === '1' ? 
+		                    tournamentState.matches[0].player1 : tournamentState.matches[0].player2;
+		                const match2Winner = tournamentState.matches[1].winner === '1' ? 
+		                    tournamentState.matches[1].player1 : tournamentState.matches[1].player2;
+		                
+		                tournamentState.finals.player1 = match1Winner;
+		                tournamentState.finals.player2 = match2Winner;
+						tournamentState.isFinal = true;
+		                localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+		            }
+		        }
+		
+		        // Show finals if they're in progress
+		        if (tournamentState.finals.player1) {
+		            document.querySelector('.finals-player1').textContent = tournamentState.finals.player1;
+		            document.querySelector('.finals-player2').textContent = tournamentState.finals.player2;
+		        }
+		
+		        // Show winner if finals are completed
+		        if (tournamentState.finals.completed) {
+		            //finalsButton.style.display = 'none';
+		            finalsContainer.style.display = 'none';
+					matchmakingContainer.style.display = 'none';
+		            const tournamentWinner = document.getElementById('tournamentWinner');
+		            const winnerName = tournamentState.finals.winner === '1' ? 
+		                tournamentState.finals.player1 : tournamentState.finals.player2;
+		            tournamentWinner.querySelector('.winner-text').textContent = 
+		                `Tournament Winner: ${winnerName}`;
+		
+		            tournamentWinner.style.display = 'block';
+		
+		            const lobbyButton = document.getElementById('lobbyButton');
+		            lobbyButton.style.display = 'block';
+		
+					setTimeout(clearTournamentData, 500);
+		        }
+			}
+		
+		    // Add finals button click handler
+		    document.getElementById('finalsButton').addEventListener('click', () => {
+		        const finalsContainer = document.getElementById('finalsContainer');
+		        const matchmakingContainer = document.getElementById('matchmakingContainer');
+		        const finalsButton = document.getElementById('finalsButton');
+		        
+		        matchmakingContainer.style.display = 'none';
+		        finalsButton.style.display = 'none';
+		        finalsContainer.style.display = 'block';
+		    });
+		
+		    // Update play button click handler for finals
+		    document.querySelectorAll('.play-button').forEach((button, index) => {
+		        button.addEventListener('click', () => {
+		            const tournamentState = JSON.parse(localStorage.getItem('tournamentState'));
+		            if (button.closest('.finals-container')) {
+		                tournamentState.currentMatch = 'finals';
+		            } else {
+		                tournamentState.currentMatch = index;
+		            }
+		            localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+
+
+					const preGameView = document.getElementById('preGameView');
+					const gameView = document.getElementById('gameView');
+
+					preGameView.style.display = 'none';
+                    gameView.style.display = 'block';
+
+					resetGameState();
+					initGame();
+		        });
+		    });
+
+			document.getElementById('lobbyButton').addEventListener('click', function() {
+				clearTournamentData();
+				//----------------------------here you should hide the tournament and display the lobby--------------------------------
+				window.location.href = '/game/';
+			});
+
+					// Game view logic
+					document.getElementById('gameOverlay').addEventListener('click', function(event) {
+						const overlay = this;
+
+						// Add the hidden class to all text elements
+						const textElements = document.querySelectorAll('.instruction, .key-container, .key-square');
+						textElements.forEach(element => {
+						element.classList.add('hidden');
+						});
+
+						// Add the fade-out class to trigger the transition
+						overlay.classList.add('fade-out');
+            
+						// Wait for the transition to complete before removing the element
+						setTimeout(() => {
+							overlay.style.display = 'none';
+						}, 500);
+
+						// Trigger click on canvas after fade
+						setTimeout(() => {
+							const canvas = document.querySelector('.webgl');
+							canvas.dispatchEvent(new MouseEvent('click', {
+								bubbles: true,
+								cancelable: true,
+								view: window
+							}));
+						}, 250);
+					}, { once: true });
+
+					// Initialize game
+					async function initGame() {
+						const gameSettings = JSON.parse(localStorage.getItem('gameSettings')) || {
+							arena: 'CASTLE',
+							powerUpsEnabled: true
+						};
+            
+						const gameModule = await import('/static/game_offline/Main.js');
+						gameModule.startGame(gameSettings);
+					}
+
+				function handleGameEnd(winner, score) {
+					gameActive = false; // Mark game as inactive
+					const tournamentState = JSON.parse(localStorage.getItem('tournamentState'));
+
+					history.replaceState(null, '', '/game/');
+            
+					if (tournamentState) {
+						if (tournamentState.isFinal) {
+							tournamentState.finals.completed = true;
+							tournamentState.finals.winner = winner;
+							tournamentState.finals.score = score;
+						} else {
+							const currentMatch = tournamentState.matches[tournamentState.currentMatch];
+							currentMatch.completed = true;
+							currentMatch.winner = winner;
+							currentMatch.score = score;
+						}
+						localStorage.setItem('tournamentState', JSON.stringify(tournamentState));
+                
+						// Return to tournament page
+						document.getElementById('tournamentButton').style.display = 'block';
+
+						document.getElementById('tournamentButton').addEventListener('click', function() {
+							gameView.style.display = 'none';
+							resetGameState();
+							preGameView.style.display = 'flex';
+							updateMatchDisplay();
+						});
+
+					} else {
+						// Show lobby button for normal game end
+						document.getElementById('lobbyButton').classList.remove('hidden');
+						document.getElementById('lobbyButton').addEventListener('click', function() {
+							clearGameCache();
+							preGameView.style.display = 'flex';
+							gameView.style.display = 'none';
+						});
+					}
+				}
+
+				function resetGameState() {
+					// Reset the overlay with proper structure
+					const gameView = document.getElementById('gameView');
+					const oldOverlay = document.getElementById('gameOverlay');
+					oldOverlay.remove();
+				
+					// Create new overlay with proper structure
+					const newOverlay = document.createElement('div');
+					newOverlay.className = 'overlay';
+					newOverlay.id = 'gameOverlay';
+				  
+					// Recreate the instruction elements with proper structure
+					newOverlay.innerHTML = `
+						<div class="instruction left-instruction">
+							Player 1
+							<div class="key-container">
+								<div class="key-square">W</div>
+								<div class="key-square">S</div>
+							</div>
+						</div>
+						<div class="instruction center-instruction">
+							Click to Start
+						</div>
+						<div class="instruction right-instruction">
+							Player 2
+							<div class="key-container">
+								<div class="key-square">↑</div>
+								<div class="key-square">↓</div>
+							</div>
+						</div>
+						<div id="winLoseMessage" class="hidden center-message"></div>
+						<div id="scoreDisplay" class="hidden center-instruction">0 - 0</div>
+						<div id="player1Label" class="hidden left-instruction">Player 1</div>
+						<div id="player2Label" class="hidden right-instruction">Player 2</div>
+						<button id="tournamentButton" class="tournament-button" style="display: none;">Back</button>
+					`;
+				
+					// Add click event listener to new overlay
+					newOverlay.addEventListener('click', function(event) {
+						const overlay = this;
+				
+						// Add the hidden class to all text elements
+						const textElements = overlay.querySelectorAll('.instruction, .key-container, .key-square');
+						textElements.forEach(element => {
+				          element.classList.add('hidden');
+						});
+				
+						// Add the fade-out class to trigger the transition
+						overlay.classList.add('fade-out');
+				      
+						// Wait for the transition to complete before removing the element
+						setTimeout(() => {
+							overlay.style.display = 'none';
+						}, 500);
+				
+						// Trigger click on canvas after fade
+						setTimeout(() => {
+							const canvas = document.querySelector('.webgl');
+							canvas.dispatchEvent(new MouseEvent('click', {
+								bubbles: true,
+								cancelable: true,
+								view: window
+							}));
+						}, 250);
+					}, { once: true });
+				
+					// Add the new overlay to gameView
+					gameView.insertBefore(newOverlay, gameView.firstChild);
+				
+					// Reset the canvas
+					const oldCanvas = document.querySelector('.webgl');
+					if (oldCanvas) {
+						oldCanvas.remove();
+					}
+					const newCanvas = document.createElement('canvas');
+					newCanvas.className = 'webgl';
+					gameView.appendChild(newCanvas);
+				
+					// Reattach tournament button click handler
+					document.getElementById('tournamentButton').addEventListener('click', function() {
+						const preGameView = document.getElementById('preGameView');
+						const gameView = document.getElementById('gameView');
+				      
+						preGameView.style.display = 'flex';
+						gameView.style.display = 'none';
+						updateMatchDisplay();
+					});
+				}
+		</script>
+
+	</body>
+
+</html>

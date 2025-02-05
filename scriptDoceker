@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# WARNING: This will remove all Docker containers, images, and volumes!
+# Ensure you have backups if needed!
+
+echo "Starting Docker cleanup..."
+
+# Stop all running containers
+echo "Stopping all containers..."
+docker stop $(docker ps -q)
+
+# Remove all containers (stopped or running)
+echo "Removing all containers..."
+docker rm -f $(docker ps -aq)
+
+# Remove all images
+echo "Removing all images..."
+docker rmi -f $(docker images -q)
+
+# Remove all unused volumes
+echo "Removing all volumes..."
+docker volume prune -f
+
+# Remove all unused networks
+echo "Removing all unused networks..."
+docker network prune -f
+docker volume rm $(docker volume ls -q)
+
+# Optionally, clean up dangling build cache (if you want to remove unused build cache)
+echo "Removing unused Docker build cache..."
+docker builder prune -f
+
+echo "Docker cleanup complete!"
+

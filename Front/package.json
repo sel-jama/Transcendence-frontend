@@ -1,0 +1,16 @@
+{
+    "name": "frontend",
+    "version": "1.0.0",
+    "main": "server.js",
+    "author": "MMB",
+    "license": "MIT",
+    "type": "module",
+    "dependencies": {
+        "express": "^4.21.2",
+        "three": "^0.162.0"
+    },
+    "scripts": {
+        "dev": "nodemon server.js",
+        "start": "node server.js"
+    }
+}

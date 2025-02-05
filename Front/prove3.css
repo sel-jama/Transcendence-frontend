@@ -1,0 +1,115 @@
+body, html {
+    background-color:black;
+    height: 100%;
+    margin: 0;
+    padding: 0; 
+}
+
+#roboto2{
+      mask-image: linear-gradient(to right, 
+          rgba(0,0,0,0) 0%, 
+          rgba(0,0,0,0.2) 10%, 
+          rgba(0,0,0,0.5) 20%, 
+          rgba(0,0,0,0.8) 30%, 
+          rgba(0,0,0,1) 40%
+      );
+    position: absolute;
+    right: 0;
+    height: 90%;
+    border-radius: 10px;
+    border-color: black;
+    backdrop-filter: brightness(0.5);
+}
+.img2{
+    transform: rotate(-7deg);      
+    height: 90%;
+    right: 52%;
+    position: absolute;
+    /* object-fit: cover; */
+    /* z-index: 1;  */
+  }
+/* .img2{
+      position: absolute;
+      right: 0;
+      height: 80%;
+} */
+
+.nickname2{
+        font-family: 'Advent Pro';
+          top: 25%;
+          left: 17%;
+          position: absolute;
+          /* right: 0%; */
+          transform: rotate(-7deg);
+          color: black;
+          /* z-index: 1; */
+}
+.real-name2{
+      font-family: 'Advent Pro';
+
+
+          top: 29%;
+          left: 19%;
+          /* top: 20%; */
+          position: absolute;
+          /* left: 50%; */
+          color: black;
+          transform: rotate(-7deg);      
+          /* z-index: 1;              */
+}
+
+.roboto-button22{
+position: absolute;
+top: 93%;
+left: 45%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-family: 'Advent Pro';
+font-size: 30px;
+color: #F5DEB3;
+background-color: transparent; /* Wheat color similar to the image */
+padding: 10px; /* Increased from 10px 20px */
+border-radius: 30px; /* Increased from 20px for a more rounded look */
+/* text-decoration: none; In case it's an <a> tag */
+display: inline-block;
+transition: all 0.3s ease; /* Smooth transition for hover effects */
+/* border: none; Remove default button border */
+/* cursor: pointer; */
+border: 1px solid #F5DEB3;
+z-index: 1;
+}
+
+.roboto-button22:hover{
+background-color: #F5DEB3;
+color: black;
+border: 2px solid #F5DEB3;
+box-shadow: 0 5px 15px #F5DEB3;
+}
+
+.roboto-button2{
+position: absolute;
+left: 10%;
+top: 93%;
+transform: translate(-50%, -50%);
+text-align: center;
+font-family:'Advent Pro';
+font-size: 30px;
+color: #F5DEB3;
+background-color: transparent; /* Wheat color similar to the image */
+padding: 10px; /* Increased from 10px 20px */
+border-radius: 30px; /* Increased from 20px for a more rounded look */
+/* text-decoration: none; In case it's an <a> tag */
+display: inline-block;
+transition: all 0.3s ease; /* Smooth transition for hover effects */
+/* border: none; Remove default button border */
+/* cursor: pointer; */
+border: 1px solid #F5DEB3;
+/* z-index: 2; */
+}
+
+.roboto-button2:hover{
+background-color: #F5DEB3;
+color: black;
+border: 2px solid #F5DEB3;
+box-shadow: 0 5px 15px #F5DEB3;
+}

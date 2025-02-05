@@ -1,0 +1,221 @@
+.Background-container-two{
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: -1;
+}
+
+
+.card-input1-two1{
+    font-family: 'Advent Pro', sans-serif;
+
+          padding: 24px;
+          border-radius: 24px;
+          background-color: #e9cc97;
+          position: absolute;
+          top: 35%;
+          left: 50%;
+          z-index: 1;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-size: 1rem;
+          display: inline-block;
+}
+      
+.card-input1-two1::placeholder{
+    font-family: 'Advent Pro', sans-serif;
+
+          color:black;
+          font-size: 1rem;
+}
+      
+.card-input1-two1:hover{
+          background-color: white;
+}
+
+
+
+.card-input1-two{
+    font-family: 'Advent Pro', sans-serif;
+          padding: 24px;
+          border-radius: 24px;
+          background-color: #e9cc97;
+          position: absolute;
+          top: 45%;
+          left: 50%;
+          z-index: 1;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-size: 1rem;
+
+          display: inline-block;
+}
+      
+.card-input1-two::placeholder{
+    font-family: 'Advent Pro', sans-serif;
+
+          color:black;
+          font-size: 1rem;
+}
+      
+.card-input1-two:hover{
+          background-color: white;
+}
+
+.card-input2-two{
+    font-family: 'Advent Pro', sans-serif;
+
+          padding: 24px;
+          border-radius: 24px;
+          background-color: #e9cc97;
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          z-index: 1;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-size: 1rem;
+          display: inline-block;
+}
+      
+.card-input2-two::placeholder{
+    font-family: 'Advent Pro', sans-serif;
+
+          color:black;
+          font-size: 1rem;
+}
+      
+.card-input2-two:hover{
+          background-color: white;
+          /* font-size: 2rem; */
+}
+
+.card-input3-two{
+    font-family: 'Advent Pro', sans-serif;
+
+          padding: 24px;
+          border-radius: 24px;
+          background-color: #e9cc97;
+          position: absolute;
+          top: 65%;
+          left: 50%;
+          z-index: 1;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-size: 1rem;
+          display: inline-block;
+}
+      
+.card-input3-two::placeholder{
+    font-family: 'Advent Pro', sans-serif;
+
+          color:black;
+          font-size: 1rem;
+}
+      
+.card-input3-two:hover{
+          background-color: white;
+          /* font-size: 2rem; */
+}
+
+.flow-two{
+          position: fixed;
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          filter: blur(15px);
+}
+
+.large-content1-two{
+          position: absolute;
+          top: 7%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          /* position: relative; */
+          font-family: 'Advent Pro', sans-serif;
+          color: #e9cc97;
+          font-size: 5rem;
+          white-space: nowrap;
+}
+      
+.card-two{
+          position: absolute;
+          top: 55%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+}
+
+.button-google-two{
+          position: absolute;
+          top: 75%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+          font-family: 'Advent Pro', sans-serif;
+          font-size: 15px;
+          color: #F5DEB3;
+          background-color: black; /* Wheat color similar to the image */
+          padding: 6px; /* Increased from 10px 20px */
+          border-radius: 30px; /* Increased from 20px for a more rounded look */
+          /* text-decoration: none; In case it's an <a> tag */
+          display: inline-block;
+          transition: all 0.3s ease !important; /* Smooth transition for hover effects */
+          /* border: none; Remove default button border */
+          /* cursor: pointer; */
+          border: 1px solid #F5DEB3;
+}
+      
+      
+.button-google-two:hover{
+          background-color: rgb(134, 49, 49);
+          color: #F5DEB3;
+          border: 2px solid #000700;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.help-link-two{
+          color: #000700;
+          padding: 6px;
+          position: absolute;
+          top: 60%;
+          left: 53%;
+          transform: translate(-50%, -50%);
+          text-align: center;
+}
+
+
+
+#popup{
+    /* display: block; */
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 3000;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    width: 40%;
+    height: 10%;
+    border: 2px solid #E1C290;
+    font-size: 36px;
+    font-weight: 400;
+    border-radius: 50px;
+    font-family: 'Advent Pro', sans-serif;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-top: none;
+    /* opacity: 1; */
+}
+
+#popup.show {
+    opacity: 1;
+}

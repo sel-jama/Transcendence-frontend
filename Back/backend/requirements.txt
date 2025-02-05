@@ -1,0 +1,17 @@
+django
+djangorestframework
+django-cors-headers
+djangorestframework-simplejwt
+django-debug-toolbar
+gunicorn
+dj-database-url
+requests
+python-dotenv
+django-two-factor-auth
+pyotp
+qrcode
+psycopg2-binary==2.9.10
+channels
+channels-redis
+daphne
+Pillow

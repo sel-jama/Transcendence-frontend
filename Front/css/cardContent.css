@@ -1,0 +1,826 @@
+/* Tab content container */
+.tab-content {
+    /* background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px; */
+    margin-top: 150px;
+    padding: 20px;
+}
+
+/* Individual tab pane */
+.tab-pane {
+    color: #E1C290;
+}
+
+/* Labels for volume controls */
+.form-label {
+    font-family: 'Advent Pro', sans-serif;
+    color: #E1C290;
+    font-size: 48px;
+    /* font-weight: small; */
+    margin-left: 80px;
+    margin-bottom: 40px;
+  }
+  
+  /* Range input styling */
+  .form-range {
+    padding-left: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    width: 60%;
+    margin-left: 300px;
+  }
+  
+  .form-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 19px;
+    width: 19px;
+    background-color: black;
+    border: 0.5px solid #E1C290;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    /* color: #E1C290; */
+    margin-top: -7px;
+  }
+  
+  .form-range::-webkit-slider-thumb:active, 
+  .form-range::-webkit-slider-thumb:focus {
+    background-color: #E1C290;
+    /* transform: scale(1.5); */
+    box-shadow: 0 0 15px 5px #E1C290;
+  }
+  
+  .form-range::-webkit-slider-runnable-track {
+    height: 2.5px;
+    background-color: white;
+  }
+
+  /* for mozilla */
+  .form-range::-moz-range-thumb{
+    height: 19px;
+    width: 19px;
+    background-color: black;
+    border: 0.5px solid #E1C290;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    /* color: #E1C290; */
+    margin-top: -7px;
+  }
+  
+  .form-range::-moz-range-thumb:active, 
+  .form-range::-moz-range-thumb:focus {
+    background-color: #E1C290;
+    /* transform: scale(1.5); */
+    box-shadow: 0 0 15px 5px #E1C290;
+  }
+  
+  .form-range::-moz-range-track{
+    height: 2.5px;
+    background-color: white;
+  }
+
+  .privacy-settings {
+    display: flex;
+    /* grid-template-columns: auto 1fr; */
+    /* margin-bottom: 50%; */
+    align-items: center;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 20px; */
+    /* justify-content: space-between; */
+  }
+
+  /* Labels for privacy Settings */
+  .privacy-form-label {
+    color: white;
+    font-size: clamp(35px, 5vw ,50px);
+    font-weight: 400px;
+    font-family: 'Advent Pro';
+    white-space: nowrap;
+    /* display: inline; */
+    /* margin-right: 100px; */
+    /* padding-left: 10%; */
+    margin-bottom: 10%;
+
+  }
+
+  /* This one is for the privacy selection box */
+  .form-select {
+    color: #E1C290;
+    background-color: black;
+    font-size: 36px;
+    /* position: absolute; */
+    flex-wrap: wrap;
+    font-family: 'Advent Pro', sans-serif;
+    border-radius: 50px;
+    font-weight: 400;
+    /* border: none; */
+    border-color: #E1C290;
+    width: 25%;
+    /* margin-left: 55%; */
+    margin-bottom: 20%;
+    /* outline: none; */
+    /* appearance: none; */
+  }
+
+.form-select option {
+  color: black;
+  background-color: #E1C290;
+}
+
+.form-select option:hover,
+.form-select option:active,
+.form-select option:focus{
+  color: white;
+  background-color: black;
+  outline: none;
+  border-color: #E1C290;
+}
+
+
+/* @media (max-width: 768px) {
+  .privacy-settings {
+      flex-direction: column;
+      align-items: flex-start;
+  }
+
+  .form-select {
+      width: 100%;
+  }
+} */
+
+.account-setting-btns1 {
+  /* position: absolute; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8%;
+}
+
+.account-setting-btns1 .rs-btn-1{
+  font-family: 'Advent Pro', sans-serif;
+  font-size: clamp(24px, calc(10vw + 10vh + 0.5rem), 36px);
+  background-color: black;
+  white-space: nowrap;
+  position: relative;
+  color: #E1C290;
+  border-color:#E1C290;
+  border-radius: 50px;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+  width: 33%;
+  height: 3%;
+  flex-wrap:wrap;
+  object-fit: contain;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2vw;
+  bottom: 15vh;
+
+}
+
+.account-setting-btns1 .rs-btn-1:hover{
+  background-color: #E1C290;
+  color: black;
+  transform: scale(0.98);
+}
+
+/* ------security settings content styling */
+.security-content {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  /* padding: 20px; */
+  gap: 13vh;
+}
+
+.security-content .sc-2fa {
+  display: flex;
+  align-items: center;
+  gap: 20vw;
+  width: 100%;
+  max-width: 600px;
+  justify-content: flex-start;
+}
+
+.sc-2fa #title {
+  color: #E1C290;
+  font-size: 50px;
+  font-family: 'Advent Pro';
+  margin-right: 20px;
+}
+
+.switch {
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+  position: relative;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #E1C290;
+}
+
+input:checked + .slider + .switch-label::after {
+  content: "Enabled";
+}
+
+input:not(:checked) + .slider + .switch-label::after {
+  content: "Disabled";
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.switch-label {
+  color: white;
+  font-size: 50px;
+  font-family: 'Advent Pro', sans-serif;
+  margin-left: 10px;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #E1C290;
+}
+
+
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.sc-pw .edit-password{
+  font-family: 'Advent Pro', sans-serif;
+  font-size: clamp(24px, calc(10vw + 10vh + 0.5rem), 36px);
+  background-color: black;
+  white-space: nowrap;
+  color: #E1C290;
+  border-color:#E1C290;
+  border-radius: 50px;
+  font-weight: 400;
+  transition: all 0.3s ease-in-out;
+  width: 35vw;
+  height: 3%;
+  text-align:left;
+  gap: 2vw;
+  /* bottom: 15vh; */
+}
+
+.sc-pw .edit-password img {
+  margin-left: 18vw;
+  width: 50px;
+  height: 50px;
+}
+
+/* --------------end of security settings styling */
+
+/* ---account opption */
+
+.account-options-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8%;
+}
+
+.account-options-content button {
+  height: 6vh;
+  width: 30vw;
+}
+
+.account-options-content img {
+  width: 50px;
+  height: 50px;
+}
+
+.account-options-content .rp-btn img{
+  margin-left: 17vw;
+}
+
+.account-options-content .rs-btn img{
+  margin-left: 16vw;
+}
+
+.rs-btn,
+.rp-btn {
+  font-size: 30px;
+  font-family: 'Advent Pro', sans-serif;
+  border-radius: 50px;
+  color: red;
+  background-color: black;
+  border-color: red;
+  margin-left: 10%;
+  text-align: left;
+  padding-left: 20px;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.rp-btn {
+  margin-bottom: 15%;
+}
+
+/* ----- */
+
+
+.reset-card {
+  /* align-items: center; */
+  position: relative;
+  background-color: black;
+  border-color: #E1C290;
+  border-radius: 50px;
+  width: 36vw;
+  height: 45vh;
+  left: 15%;
+  top: 17%;
+
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* padding: 20px; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* margin-bottom: 20%; */
+  /* margin-left: 10%;
+  margin-top: 7%; */
+  /* left: 0; */
+  /* right: 0; */
+  /* margin: auto; */
+  /* z-index: 10; */
+}
+
+.reset-card-body {
+  /* position: relative; */
+  font-family: 'Advent Pro';
+  font-size: 33px;
+  font-weight: 144;
+  color: white;
+  /* justify-content: center;
+  align-items: center; */
+  /* text-align: center; */
+  /* flex-grow: 1; */
+  /* display: flex; */
+  /* padding: 2%; */
+  /* padding-bottom: 2%; */
+}
+
+.reset-card-text{
+  /* text-align: center; */
+  /* padding-left: 20px; */
+  padding-top: 7vh;
+  position: absolute;
+  /* padding-top: 2%; */
+  /* bottom: 1vh; */
+  padding-bottom: 0.1vh;
+  padding-left: 2%;
+}
+
+.reset-card-title {
+  position: absolute;
+  /* margin-top: 2%;
+  margin-bottom: 2%; */
+  /* padding-bottom: 1.5%; */
+  font-size: 36px;
+  color: #E1C290;
+  /* bottom: 27vh; */
+  padding-left: 2%;
+  padding-top: 1.5%;
+  margin-bottom: 100vh;
+  /* padding-top: vh; */
+}
+
+.reset-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 9vw;
+  object-fit: contain;
+  position: absolute;
+  /* padding-left: 20px; */
+  bottom: 2vh;
+}
+
+#cancel-btn, #reset-btn{
+  /* position: absolute; */
+  font-family: 'Advent Pro', sans-serif;
+  justify-content: space-between;
+  border-radius: 50px;
+  width: 250px;
+  height: 80px;
+}
+
+#cancel-btn {
+  border-color: #E1C290;
+  color: #E1C290;
+  background-color: black;
+  /* margin-right: 14vw; */
+  margin-left: 2%;
+}
+
+#reset-btn {
+  color: red;
+  border-color: red;
+  background-color: black;
+}
+
+
+.control-settings div{
+  display: flex;
+}
+
+.control-settings .control-stg-label{
+  position: relative;
+  color: white;
+  width: 40vw;
+  height: 5.56vh;
+  font-family: 'Advent Pro';
+  padding-left: 5%;
+  font-size: 48px;
+  font-weight: 144;
+  /* left: 47vw;
+  top: 46.3vh; */
+}
+
+.control-settings h5 {
+  font-size: 48px;
+  color: #E1C290;
+  /* display: inline-flex; */
+}
+
+.control-settings .move-up {
+  margin-bottom: 9%;
+}
+
+/* .control-settings .arrow-icon {
+  border-color: #E1C290;
+} */
+
+.move-up
+.move-down{
+  /* display: flex; */
+  padding-right: 4%;
+}
+
+.move-down-s,
+.move-up-w {
+  width: 2.5vw;
+  height: 5.5vh;
+  border-radius: 12px;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+  font-weight: 400;
+  color: #E1C290;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 5vh;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+#separetor {
+  color: #E1C290;
+  font-size: 36px;
+}
+
+/* input[type="radio"]:checked + label:before{
+  background-color: black;
+  border: 2px solid #E1C290;
+} */
+
+input[type="radio"]:checked + label{
+  background-color: black;
+  /* color: black; */
+}
+
+.move-up-flesh,
+.move-down-flesh {
+  background-color: transparent;
+  width: 2.5vw;
+  height: 5.5vh;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border: 2px solid #E1C290;
+  margin-left: 8px;
+}
+
+/*---- edit pw content */
+
+.edit-pw-content{
+  display: none;
+  background-color: black;
+  position: absolute;
+  z-index: 2000;
+  width: 40vw;
+  height: 50vh;
+  bottom: 4vh;
+  border-color: #E1C290;
+  border-radius: 50px;
+  margin-left: 5vw;
+  font-family: 'Advent Pro', sans-serif;
+
+}
+
+.edit-pw-content #pw-title{
+  color: #E1C290;
+  font-size: 36px;
+  display: flex;
+  text-align: left;
+  padding: 15px;
+}
+
+.change-pw-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 7vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.change-pw-inputs input {
+  background-color: #181818;
+  color: #E1C290;
+  border-color: #E1C290;
+  border-radius: 50px;
+  width: 25vw;
+  height: 7vh;
+}
+
+.change-pw-inputs input::placeholder {
+  color: #E1C290;
+  font-size: 36px;
+  padding-left: 2%;
+}
+
+.change-pw-inputs #current,
+.change-pw-inputs #new,
+.change-pw-inputs #confirm-new {
+  padding-left: 2%;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+}
+
+.change-pw-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 7vw;
+  width: 100%;
+  padding-left: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-pw-buttons button {
+  border-radius: 50px;
+  border-color: #E1C290;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  width: 13vw;
+  height: 8vh;
+  color: #E1C290;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+  margin-top: 9vh;
+  outline: none;
+}
+
+.change-pw-buttons button:hover{
+  background-color: #E1C290;
+  color: #181818;
+
+}
+
+/* qr code  */
+
+.qr-card {
+  position: absolute;
+  background-color: black;
+  width: 40vw;
+  height: 45vh;
+  border-radius: 50px;
+  border: 0.05em solid #E1C290;
+  font-family: 'Advent Pro', sans-serif;
+  bottom: 5vh;
+  left: 5.5vw;
+  display: flex;
+  flex-direction: row;
+  /* opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease; */
+}
+
+.qr-card .qr-card-title{
+  font-size: 36px;
+  color: #E1C290;
+  display: flex;
+  justify-content: left;
+  padding-left: 2vw;
+  padding-top: 1.5vh;
+  font-weight: 400;
+}
+
+.qr-card .qr-description {
+  color: white;
+  font-size: 36px;
+  justify-content: left;
+  padding: 2vw;
+  font-weight: 144;
+}
+
+.qr-card .qr-container {
+  position: absolute;
+  background-color: #E1C290;
+  width: 13vw;
+  height: 24vh;
+  border-radius: 50px;
+  margin-left: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.qr-card .qr-container img{
+  position: absolute;
+  object-fit: contain;
+  align-items: center;
+  justify-content: center;
+  width: 10vw;
+  height: auto;
+  border-radius: 50px;
+  display: flex;
+}
+
+.qr-card-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 13vw;
+  flex-wrap: wrap;
+  padding: 0 50px;
+}
+
+.qr-card button {
+  background-color: black;
+  border-color: #E1C290;
+  color: #E1C290;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+  border-radius: 50px;
+  width: 10vw;
+  height: 8vh;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.qr-card button:hover {
+  background-color: #E1C290;
+  color: black;
+  transform: translateY(10px);
+}
+
+/* 6digit verifacation card */
+
+.digit-verif-card {
+  position: absolute;
+  background-color: black;
+  width: 40vw;
+  height: 45vh;
+  border-radius: 50px;
+  border: 0.05em solid #E1C290;
+  font-family: 'Advent Pro', sans-serif;
+  bottom: 5vh;
+  left: 5.5vw;
+  display: flex;
+  flex-direction: row;
+  /* opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease; */
+}
+
+.digit-verif-card .dv-card-title{
+  font-size: 36px;
+  color: #E1C290;
+  display: flex;
+  justify-content: left;
+  padding-left: 2vw;
+  padding-top: 1.5vh;
+  font-weight: 400;
+}
+
+.digit-verif-card .dv-description {
+  color: white;
+  font-size: 36px;
+  justify-content: left;
+  padding: 2vw;
+  font-weight: 144;
+}
+
+.dv-card-btns {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 13vw;
+  flex-wrap: wrap;
+  padding: 0 50px;
+  bottom: 1.8vh;
+}
+
+.digit-verif-card button {
+  background-color: black;
+  border-color: #E1C290;
+  color: #E1C290;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+  border-radius: 50px;
+  width: 10vw;
+  height: 8vh;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.digit-verif-card button:hover {
+  background-color: #E1C290;
+  color: black;
+  transform: translateY(10px);
+}
+
+.digit-verif-card .dv-container {
+  position: absolute;
+  width: 5vw;
+  height: 14vh;
+  /* margin-left: 25vw; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5vw;
+  bottom: 10vh;
+  left: 17vw;
+}
+
+.dv-container input {
+  height: 9vh;
+  width: 4vw;
+  border-radius: 25px;
+  border: 0.1em solid #E1C290;
+  color: #E1C290;
+  background-color: black;
+  font-size: 36px;
+  font-family: 'Advent Pro', sans-serif;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
