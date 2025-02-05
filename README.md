@@ -41,7 +41,3 @@ A modern Single-Page Application (SPA) gaming platform built with vanilla JavaSc
       - firefox
 # Usage
       docker-compose up --build
-
-# Notes for team:
-  - This is a partial work status, other pages and features are under developement by uness.
-  - The responsiveness is not fully done so the style layout may break in some screen sizes.
