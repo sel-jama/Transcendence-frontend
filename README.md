@@ -27,14 +27,6 @@ A modern Single-Page Application (SPA) gaming platform built with vanilla JavaSc
     A settings menu where users can change game parameters.
     Unified design across all games, ensuring a consistent visual and interactive experience on the front end.
 
-# Work status:
-✅ Dashboard Page: HTML/CSS and JavaScript (leaderboard and settings sliders)  
-✅ Settings Page: Complete with responsive CSS and interactive JS  
-✅ Leaderboard Page: HTML/CSS structure (non-interactive)
-
-# Currently working on:
-- Responsive CSS: Making styles adapt smoothly across devices
-- Leaderboard Page in js: Adding interactive features
 
 # Device compatibility:
       - chrome
